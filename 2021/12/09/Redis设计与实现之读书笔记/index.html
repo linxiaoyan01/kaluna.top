@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Redis设计与实现之读书笔记"><meta name="keywords" content="Redis"><meta name="author" content="Kaluna"><meta name="copyright" content="Kaluna"><title>Redis设计与实现之读书笔记 | 嘿，走钢索的人</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="嘿，走钢索的人" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一部分-数据结构与对象"><span class="toc-number">1.</span> <span class="toc-text">第一部分 数据结构与对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第二章-简单动态字符串"><span class="toc-number">1.1.</span> <span class="toc-text">第二章 简单动态字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章-链表"><span class="toc-number">1.2.</span> <span class="toc-text">第三章 链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四章-字典"><span class="toc-number">1.3.</span> <span class="toc-text">第四章 字典</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五章-跳跃表"><span class="toc-number">1.4.</span> <span class="toc-text">第五章 跳跃表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六章-整数集合"><span class="toc-number">1.5.</span> <span class="toc-text">第六章 整数集合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章-压缩列表"><span class="toc-number">1.6.</span> <span class="toc-text">第七章 压缩列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第八章-对象"><span class="toc-number">1.7.</span> <span class="toc-text">第八章 对象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二部分-单机数据库的实现"><span class="toc-number">2.</span> <span class="toc-text">第二部分 单机数据库的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第九章-数据库"><span class="toc-number">2.1.</span> <span class="toc-text">第九章 数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十章-RDB持久化"><span class="toc-number">2.2.</span> <span class="toc-text">第十章 RDB持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十一章-AOF持久化"><span class="toc-number">2.3.</span> <span class="toc-text">第十一章 AOF持久化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十二章-事件"><span class="toc-number">2.4.</span> <span class="toc-text">第十二章 事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十三章-客户端"><span class="toc-number">2.5.</span> <span class="toc-text">第十三章 客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第十四章-服务器"><span class="toc-number">2.6.</span> <span class="toc-text">第十四章 服务器</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Kaluna</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/lxy1866" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">35</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">39</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">18</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">嘿，走钢索的人</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about">About</a><a class="site-page" href="/tags/">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">Redis设计与实现之读书笔记</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-12-09</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Redis/">Redis</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2021/12/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E4%B9%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2021/12/09/Redis设计与实现之读书笔记/"></span></a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="第一部分-数据结构与对象"><a href="#第一部分-数据结构与对象" class="headerlink" title="第一部分 数据结构与对象"></a>第一部分 数据结构与对象</h1><h2 id="第二章-简单动态字符串"><a href="#第二章-简单动态字符串" class="headerlink" title="第二章 简单动态字符串"></a>第二章 简单动态字符串</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133235.png" alt="image-20211208133233464"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133246.png" alt="image-20211208133243593"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133345.png" alt="image-20211208133343784"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133323.png" alt="image-20211208133322367"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133427.png" alt="image-20211208133426544"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133450.png" alt="image-20211208133448741"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133503.png" alt="image-20211208133501416"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133529.png" alt="image-20211208133527862"></p>
+<p>Redis 只会使用 C 字符串作为字面量，在大多数情况下，Redis 使用 SDS（Simple Dynamic String，简单动态字符串）作为字符串表示。 </p>
+<p><strong>比起 C 字符串，SDS 具有以下优点：</strong> </p>
+<p>1）常数复杂度获取字符串长度。 2）杜绝缓冲区溢出。 3）减少修改字符串长度时所需的内存重分配次数。 4）二进制安全。 5）兼容部分 C 字符串函数。</p>
+<h2 id="第三章-链表"><a href="#第三章-链表" class="headerlink" title="第三章 链表"></a>第三章 链表</h2><p>列表键的底层实现之一，当一个列表键包含了数量比较多的元素，又或者列表中包含的元素都是比较长的字符串时，Redis就会使用链表来作为列表键的底层实现。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133716.png" alt="image-20211208133715387"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133737.png" alt="image-20211208133736524"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208133805.png" alt="image-20211208133803987"></p>
+<p>链表被广泛用于实现 Redis 的各种功能，比如列表键、发布与订阅、慢查询、监视 器等。 每个链表节点由一个 listNode 结构来表示，每个节点都有一个指向前置节点和后 置节点的指针，所以 Redis 的链表实现是双端链表。每个链表使用一个 list 结构来表示，这个结构带有表头节点指针、表尾节点指针， 以及链表长度等信息。因为链表表头节点的前置节点和表尾节点的后置节点都指向 NULL，所以 Redis 的链 表实现是无环链表。通过为链表设置不同的类型特定函数，Redis 的链表可以用于保存各种不同类型的值。</p>
+<h2 id="第四章-字典"><a href="#第四章-字典" class="headerlink" title="第四章 字典"></a>第四章 字典</h2><p>除了用来表示数据库之外，字典还是哈希键的底层实现之一，当一个哈希键包含的键值对比较多，又或者键值对中的元素都是比较长的字符串时，redis就会使用字典作为哈希键的底层实现。redis的字典使用哈希表作为底层实现，一个哈希表里面有多个哈希表节点，每个哈希表节点就保存了字典中的一个键值对。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208150915.png" alt="image-20211208150914165"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208151056.png" alt="image-20211208151054413"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208150940.png" alt="image-20211208150939376"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208151002.png" alt="image-20211208151001052"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208151154.png" alt="image-20211208151153461"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208151245.png" alt="image-20211208151244494"></p>
+<p><strong>ht[1] 哈希表只会对ht[0] 哈希表进行rehash 时使用</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208153925.png" alt="image-20211208153924631"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208154920.png" alt="image-20211208154917059"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208155038.png" alt="image-20211208155037644"></p>
+<p><strong>Redis用MurmurHash算法来计算键的哈希值，该算法可以给出一个很好的随机性。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208155600.png" alt="image-20211208155558784"></p>
+<p><strong>程序总是将新节点添加到链表的表头位置</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208160113.png" alt="image-20211208160110880"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208160238.png" alt="image-20211208160237418"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208160409.png" alt="image-20211208160408665"></p>
+<p><strong>//TODO 等我看完操作系统回头来看看这是什么意思</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208213838.png" alt="image-20211208213829644"></p>
+<p>渐进式rehash</p>
+<p><img src="C:/Users/86158/AppData/Roaming/Typora/typora-user-images/image-20211208214541860.png" alt="image-20211208214541860"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214557.png" alt="image-20211208214556018"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214609.png" alt="image-20211208214608613"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214624.png" alt="image-20211208214623220"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214651.png" alt="image-20211208214650133"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214709.png" alt="image-20211208214708196"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208214729.png" alt="image-20211208214728758"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208215643.png" alt="image-20211208215642393"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208215927.png" alt="image-20211208215925322"></p>
+<h2 id="第五章-跳跃表"><a href="#第五章-跳跃表" class="headerlink" title="第五章 跳跃表"></a>第五章 跳跃表</h2><p>跳跃表支持平均O(logN)，最坏O(N) 复杂度查找，作为有序集合键的底层实现之一，redis只在两个地方用到了跳跃表，一个是实现有序集合键，另一个是在集群节点中用作内部数据结构。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208221808.png" alt="image-20211208221807338"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208223124.png" alt="image-20211208223123554"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209000617.png" alt="image-20211209000615498"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208223334.png" alt="image-20211208223332753"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208223511.png" alt="image-20211208223509756"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208224343.png" alt="image-20211208224341759"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208224413.png" alt="image-20211208224412303"></p>
+<p>跨度实际上是用来计算排位rank的，将沿途访问过的所有层的跨度累计起来，得到的结果就是目标节点在跳跃表中的排位。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208224950.png" alt="image-20211208224949435"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208225010.png" alt="image-20211208225009825"></p>
+<p><strong>后退指针每次只能后退至前一个节点。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211208225502.png" alt="image-20211208225500811"></p>
+<p>score 是一个double类型的浮点数</p>
+<p>obj属性是一个指针，指向一个字符串对象，字符串对象保存着一个SDS值</p>
+<p>同一个跳跃表，各个节点保存的成员对象必须是唯一的，多个节点保存的分值可以相同，分值相同的节点将按照成员对象在字典序中的大小来进行排序，成员对象较小的节点排在前面。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209154531.png" alt="image-20211208232636459"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209001152.png" alt="image-20211209001150712"></p>
+<p><strong>每个跳跃表节点的层高都是1至32之间的随机数</strong></p>
+<h2 id="第六章-整数集合"><a href="#第六章-整数集合" class="headerlink" title="第六章 整数集合"></a>第六章 整数集合</h2><p>intset是集合键的底层实现之一，当一个集合中只包含整数，并且元素数量不多时，Redis就会使用这个inset作为集合键的底层实现</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209003213.png" alt="image-20211209003212392"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209003229.png" alt="image-20211209003228029"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209003245.png" alt="image-20211209003243744"></p>
+<p><strong>升级</strong></p>
+<p>升级首先要做的就是根据新类型的长度，以及集合元素的数量（包括要添加的新元素在内），对底层数组进行空间重分配。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209084557.png" alt="image-20211209083346846"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209084553.png" alt="image-20211209083639526"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209084548.png" alt="image-20211209083935824"></p>
+<p>新元素小于现有元素的情况下，新元素会被放置在底层数组的最开头（索引0）；</p>
+<p>新元素大于现有元素的情况下，新元素会被放置在底层数组的最末尾（索引 length - 1）；</p>
+<p><strong>每次向整数集合添加新元素都可能会引起升级，而每次升级都需要对底层数组中已经有的所有元素进行类型转换，所以新元素的时间复杂度为O(N)</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209085324.png" alt="image-20211209085323681"></p>
+<h2 id="第七章-压缩列表"><a href="#第七章-压缩列表" class="headerlink" title="第七章 压缩列表"></a>第七章 压缩列表</h2><p>压缩列表ziplist是列表键和哈希键的底层实现之一。当一个列表键只包含少量列表项，并且每个列表项要么是小整数值，要么就是长度比较短的字符串，那么Redis就会使用压缩列表来做列表键的底层实现。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209091508.png" alt="image-20211209091507303"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209092105.png" alt="image-20211209092104548"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209092248.png" alt="image-20211209092247009"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209092517.png" alt="image-20211209092516820"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209092949.png" alt="image-20211209092943262"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209093118.png" alt="image-20211209093116855"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209093335.png" alt="image-20211209093333990"></p>
+<p><strong>encoding</strong></p>
+<p>一字节、两字节或者五字节长，值的最高位位00、01或者10的是字节数组编码，这种编码表示节点的content属性保存着字节数组，数组的长度由编码除去最高两位之后的其他位记录；</p>
+<p>一字节长，值的最高位以11开头的是整数编码，这种编码表示节点的content属性保存着整数值，整数值的类型和长度由编码除去最高两位之后的其他位记录；</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209094055.png" alt="image-20211209094054538"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209095941.png" alt="image-20211209095939908"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209100155.png" alt="image-20211209100153485"></p>
+<p><strong>连锁更新</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209102432.png" alt="image-20211209102431069"></p>
+<p><strong>ziplistPush等命令的平均复杂度仅为O(N)</strong></p>
+<p>因为ziplistPush ziplistInsert ziplistDelete ziplistDeleteRange 四个函数都有可能引发连锁更新，所以他们的最坏复杂度都是$O(N^2)$，但是这种操作出现的几率不高。</p>
+<p>因为连锁更新在最坏情况下需要对压缩列表执行N次空间重分配操作，而每次空间重分配的最坏复杂度为O(N)，所以连锁更新的最坏复杂度为$O(N^2)$</p>
+<h2 id="第八章-对象"><a href="#第八章-对象" class="headerlink" title="第八章 对象"></a>第八章 对象</h2><p>redis基于sds，双端链表，字典，压缩链表，整数集合来创建了一个对象系统，这个系统包含字符串对象，列表对象，哈希对象，集合对象，有序集合对象着五种类型的对象。</p>
+<p>redis对象系统实现了基于引用计数技术的内存回收机制，另外，redis通过引用计数技术实现了对象共享机制，这个机制可以在适当的条件下，通过让多个数据库键共享同i对象来节约内存。</p>
+<p>在服务器启用了maxmemory功能的情况下，数据库键的空转时长较大的优先被服务器删除，因为redis的对象带有访问时间记录信息。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209110110.png" alt="image-20211209110109010"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209110126.png" alt="image-20211209110125157"></p>
+<p>键总是一个字符串对象，而值可以是字符串对象，列表对象，哈希对象，集合对象或者有序经济和对象的其中一种。</p>
+<p>“字符串键”是指这个数据库对应的值为字符串对象，</p>
+<p>“列表键”是指这个数据库所对应的值为列表对象。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209110905.png" alt="image-20211209110903574"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209111028.png" alt="image-20211209111027230"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209113436.png" alt="image-20211209113435457"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209114739.png" alt="image-20211209114737745"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209114747.png" alt="image-20211209114745926"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209120249.png" alt="image-20211209120248399"></p>
+<p><strong>字符串值的长度大于32字节</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209120430.png" alt="image-20211209120428846"></p>
+<p><strong>字符串值的长度小于32字节</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209132141.png" alt="image-20211209132140125"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209120646.png" alt="image-20211209120645571"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209141018.png" alt="image-20211209141016926"></p>
+<p>long double 类型表示的浮点数在redis中也是作为字符串值来保存的。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209141600.png" alt="image-20211209141558833"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209142131.png" alt="image-20211209142129698"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209142317.png" alt="image-20211209142316091"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209143102.png" alt="image-20211209143100345"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209143025.png" alt="image-20211209143022959"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209143415.png" alt="image-20211209143413748"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209144150.png" alt="image-20211209144148618"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209144256.png" alt="image-20211209144254788"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209144555.png" alt="image-20211209144554248"></p>
+<p><strong>哈希对象</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145057.png" alt="image-20211209145056236"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209144943.png" alt="image-20211209144942565"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145002.png" alt="image-20211209145001143"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145206.png" alt="image-20211209145205256"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145255.png" alt="image-20211209145254387"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145613.png" alt="image-20211209145612080"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209145750.png" alt="image-20211209145748195"></p>
+<p><strong>集合对象</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209150154.png" alt="image-20211209150153367"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209150705.png" alt="image-20211209150704379"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209150909.png" alt="image-20211209150908076"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209150927.png" alt="image-20211209150925898"></p>
+<p><strong>有序集合对象</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209151413.png" alt="image-20211209151411365"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209151428.png" alt="image-20211209151426613"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209151501.png" alt="image-20211209151500004"></p>
+<p><strong>skiplist编码的有序集合对象使用zset结构作为底层实现，一个zset结构包含一个字典和一个跳跃表。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209151729.png" alt="image-20211209151727732"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209151750.png" alt="image-20211209151749487"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209152440.png" alt="image-20211209152438709"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209152545.png" alt="image-20211209152544089"></p>
+<p><strong>有序集合每个元素的成员都是一个字符串对象，而每个元素的分值都是一个double类型的浮点数。虽然zset结构同时使用跳跃表和字典来保存有序集合元素，但这两种数据结构都会通过指针来共享相同元素的成员和分支，所以同时使用跳跃表和字典来保存集合元素不会产生任何重复成员或者分值。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209153315.png" alt="image-20211209153311597"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209153442.png" alt="image-20211209153441259"></p>
+<p><strong>有序集合键的值为哈希对象，所以用于有序集合键的所有命令都是针对哈希对象来构建的。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209153855.png" alt="image-20211209153854025"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209234136.png" alt="image-20211209154232928"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209154248.png" alt="image-20211209154246812"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209154347.png" alt="image-20211209154345945"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209154744.png" alt="image-20211209154743800"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155032.png" alt="image-20211209155031195"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155205.png" alt="image-20211209155204185"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155244.png" alt="image-20211209155242715"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155401.png" alt="image-20211209155400261"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155618.png" alt="image-20211209155617230"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155751.png" alt="image-20211209155750060"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209155907.png" alt="image-20211209155906203"></p>
+<p>在初始化服务器时，创建一万个字符串对象，这些对象包含了从0到9999的所有整数值，当服务器需要用到值为0到9999字符串对象时，服务器就会使用这些共享对象，而不是新创建对象。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209160455.png" alt="image-20211209160454356"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209161123.png" alt="image-20211209161122176"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209161222.png" alt="image-20211209161220808"></p>
+<h1 id="第二部分-单机数据库的实现"><a href="#第二部分-单机数据库的实现" class="headerlink" title="第二部分 单机数据库的实现"></a>第二部分 单机数据库的实现</h1><h2 id="第九章-数据库"><a href="#第九章-数据库" class="headerlink" title="第九章 数据库"></a>第九章 数据库</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209162049.png" alt="image-20211209162048052"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209162130.png" alt="image-20211209162128506"></p>
+<p>切换数据库</p>
+<p>select + 数字</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209162610.png" alt="image-20211209162608558"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209162730.png" alt="image-20211209162728589"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209163219.png" alt="image-20211209163214101"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209163639.png" alt="image-20211209163637910"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209164525.png" alt="image-20211209164523434"></p>
+<p>数据库的键空间是字典</p>
+<p>用于清空整个数据库的FLUSHDB命令，就是通过删除键空间中的所有键值对来实现的，RANDOMKEY命令，就是通过在键空间中随机返回一个键来实现的。</p>
+<p>DBSIZE命令返回键空间中包含的键值对的数量来实现的，类似的命令还有EXISTS，RENAME，KEYS等。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209170508.png" alt="image-20211209170507155"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209170522.png" alt="image-20211209170520740"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171056.png" alt="image-20211209171054999"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171137.png" alt="image-20211209171136522"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171325.png" alt="image-20211209171323630"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171624.png" alt="image-20211209171622768"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171818.png" alt="image-20211209171816877"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209171912.png" alt="image-20211209171910515"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209172501.png" alt="image-20211209172436526"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209172457.png" alt="image-20211209172456450"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209174135.png" alt="image-20211209174134344"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209174149.png" alt="image-20211209174147868"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209174335.png" alt="image-20211209174334327"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210085717.png" alt="image-20211210085714874"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209174638.png" alt="image-20211209174636795"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209175313.png" alt="image-20211209175311768"></p>
+<p><strong>redis实际上使用的是惰性删除和定期删除两种策略</strong></p>
+<p>过期的惰性删除策略由db.c/expireIfNeeded函数实现</p>
+<p><strong>过期的定期删除策略由redis.c/activeExpireCycle函数实现，每当Redis的服务器周期性操作redis.c/serverCron函数执行时，activeExpireCycle函数就会被调用，它在规定的时间内，分多次遍历服务器中的各个数据库，从数据库的expires字典中随机检查一部分键的过期时间，并删除其中的过期键。</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209181204.png" alt="image-20211209181203225"></p>
+<p><strong>AOF，RDB和复制功能对过期键的处理</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210085845.png" alt="image-20211210085844277"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210090146.png" alt="image-20211210090144578"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210090215.png" alt="image-20211210090213831"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210090402.png" alt="image-20211210090359185"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210092129.png" alt="image-20211210092127992"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210092427.png" alt="image-20211210092425904"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210092541.png" alt="image-20211210092540618"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210092631.png" alt="image-20211210092630056"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210092746.png" alt="image-20211210092745146"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210093113.png" alt="image-20211210093112018"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210093502.png" alt="image-20211210093501019"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210093624.png" alt="image-20211210093623384"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210094119.png" alt="image-20211210094117596"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210102921.png" alt="image-20211210102919761"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210103117.png" alt="image-20211210103115140"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210102748.png" alt="image-20211210102745573"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210103349.png" alt="image-20211210103347567"></p>
+<h2 id="第十章-RDB持久化"><a href="#第十章-RDB持久化" class="headerlink" title="第十章 RDB持久化"></a>第十章 RDB持久化</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209182531.png" alt="image-20211209182529181"></p>
+<p>Redis是内存数据库，它将自己的数据库状态存储在内存里面。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209182651.png" alt="image-20211209182649916"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209183035.png" alt="image-20211209183033598"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209183053.png" alt="image-20211209183051906"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209183331.png" alt="image-20211209183329734"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209183609.png" alt="image-20211209183607470"></p>
+<p><strong>save 会阻塞 而bgsave会fork出子进程</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209183746.png" alt="image-20211209183744887"></p>
+<p>自动间隔性保存——向服务器提供以下配置</p>
+<p>save 900 1</p>
+<p>save 300 10</p>
+<p>save 60 10000</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209190758.png" alt="image-20211209190754684"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209190817.png" alt="image-20211209190816248"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209191815.png" alt="image-20211209191814227"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209191831.png" alt="image-20211209191829720"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209192048.png" alt="image-20211209192046006"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209192235.png" alt="image-20211209192233830"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209192543.png" alt="image-20211209192542380"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209192525.png" alt="image-20211209192523845"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209193003.png" alt="image-20211209193002367"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209193952.png" alt="image-20211209193949321"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209194014.png" alt="image-20211209194013021"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209194029.png" alt="image-20211209194028129"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209194137.png" alt="image-20211209194135503"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209194441.png" alt="image-20211209194439900"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209194600.png" alt="image-20211209194559651"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209195425.png" alt="image-20211209195424223"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209195513.png" alt="image-20211209195512019"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209195523.png" alt="image-20211209195522617"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209195629.png" alt="image-20211209195628034"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209195859.png" alt="image-20211209195857951"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209200112.png" alt="image-20211209200110921"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209200136.png" alt="image-20211209200134361"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209200336.png" alt="image-20211209200334804"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209201419.png" alt="image-20211209201417378"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209202218.png" alt="image-20211209202216197"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209202422.png" alt="image-20211209202420306"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209202632.png" alt="image-20211209202630267"></p>
+<p>od命令：分析RDB文件</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209202819.png" alt="image-20211209202817141"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209202911.png" alt="image-20211209202910020"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209203251.png" alt="image-20211209203249849"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209203314.png" alt="image-20211209203312340"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209203510.png" alt="image-20211209203509457"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SADD LANG &quot;C&quot; &quot;JAVA&quot; &quot; RUBY&quot;</span><br><span class="line">od -c dump.rdb</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209204019.png" alt="image-20211209204017415"></p>
+<p><strong>RDB文件是一个经过压缩的二进制文件，由多个部分组成。</strong></p>
+<p><strong>对于不同的类型的键值对，RDB文件会使用不同的方式来保存它们。</strong></p>
+<h2 id="第十一章-AOF持久化"><a href="#第十一章-AOF持久化" class="headerlink" title="第十一章 AOF持久化"></a>第十一章 AOF持久化</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209205145.png" alt="image-20211209204905978"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209205133.png" alt="image-20211209205131425"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209205346.png" alt="image-20211209205344887"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209210949.png" alt="image-20211209210948036"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209205540.png" alt="image-20211209205538594"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209211054.png" alt="image-20211209211052409"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209211227.png" alt="image-20211209211226363"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209212545.png" alt="image-20211209212543719"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209213045.png" alt="image-20211209213043058"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209213244.png" alt="image-20211209213243239"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209213419.png" alt="image-20211209213418084"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209213540.png" alt="image-20211209213539294"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209214153.png" alt="image-20211209214151543"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209214447.png" alt="image-20211209214445737"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209214759.png" alt="image-20211209214758411"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209214858.png" alt="image-20211209214856335"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211209215048.png" alt="image-20211209215045707"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210084723.png" alt="image-20211210084721206"></p>
+<p><strong>以上就是AOF后台重写，也即是BGREWRITEAOF命令的实现原理</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210084855.png" alt="image-20211210084854065"></p>
+<h2 id="第十二章-事件"><a href="#第十二章-事件" class="headerlink" title="第十二章 事件"></a>第十二章 事件</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210104325.png" alt="image-20211210104324527"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210104949.png" alt="image-20211210104948292"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210110017.png" alt="image-20211210110016462"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210110152.png" alt="image-20211210110150242"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210110746.png" alt="image-20211210110744452"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210110905.png" alt="image-20211210110904536"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210111727.png" alt="image-20211210111726231"></p>
+<h2 id="第十三章-客户端"><a href="#第十三章-客户端" class="headerlink" title="第十三章 客户端"></a>第十三章 客户端</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210124523.png" alt="image-20211210124521208"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210124649.png" alt="image-20211210124639220"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210124744.png" alt="image-20211210124740999"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210125016.png" alt="image-20211210125015172"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210125029.png" alt="image-20211210125027940"></p>
+<p><img src="C:/Users/86158/AppData/Roaming/Typora/typora-user-images/image-20211210125503954.png" alt="image-20211210125503954"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210125646.png" alt="image-20211210125644583"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210125708.png" alt="image-20211210125707017"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210133144.png" alt="image-20211210133142971"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210133736.png" alt="image-20211210133735041"></p>
+<p>PUBSUB命令和SCRIPT LOAD命令有副作用，会被写到AOF文件中。</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210134016.png" alt="image-20211210134014593"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210134041.png" alt="image-20211210134038957"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210134056.png" alt="image-20211210134055357"></p>
+<p><strong>输入缓冲最大不能大于1GB，否则服务器将关闭这个客户端</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210134224.png" alt="image-20211210134223161"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135052.png" alt="image-20211210135051564"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210134259.png" alt="image-20211210134258443"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135105.png" alt="image-20211210135104211"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135238.png" alt="image-20211210135237387"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135557.png" alt="image-20211210135555716"></p>
+<p><img src="C:/Users/86158/AppData/Roaming/Typora/typora-user-images/image-20211210135534034.png" alt="image-20211210135534034"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135710.png" alt="image-20211210135708633"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135806.png" alt="image-20211210135804653"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135820.png" alt="image-20211210135819155"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210135851.png" alt="image-20211210135850076"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210140122.png" alt="image-20211210140121091"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210140420.png" alt="image-20211210140419548"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210140603.png" alt="image-20211210140602303"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210140909.png" alt="image-20211210140907904"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210141228.png" alt="image-20211210141227584"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210141347.png" alt="image-20211210141345883"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210141411.png" alt="image-20211210141410341"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210141428.png" alt="image-20211210141427133"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210142108.png" alt="image-20211210142107605"></p>
+<h2 id="第十四章-服务器"><a href="#第十四章-服务器" class="headerlink" title="第十四章 服务器"></a>第十四章 服务器</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210144004.png" alt="image-20211210144003198"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210144253.png" alt="image-20211210144247782"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210144313.png" alt="image-20211210144311936"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210150259.png" alt="image-20211210150258339"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210150217.png" alt="image-20211210150216002"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210150853.png" alt="image-20211210150852174"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210151719.png" alt="image-20211210151718053"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210151738.png" alt="image-20211210151737257"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210152120.png" alt="image-20211210152118960"></p>
+<p><strong>一些特殊情况要注意（一堆预备操作，可怕）</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210152538.png" alt="image-20211210152537481"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210153420.png" alt="image-20211210153418236"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210153604.png" alt="image-20211210153602813"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210153818.png" alt="image-20211210153817192"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210154035.png" alt="image-20211210154033813"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210154122.png" alt="image-20211210154121704"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210175303.png" alt="image-20211210175301841"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210175920.png" alt="image-20211210175919270"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210180049.png" alt="image-20211210180048321"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210180102.png" alt="image-20211210180100740"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210180438.png" alt="image-20211210180435529"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210181425.png" alt="image-20211210181424235"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210181524.png" alt="image-20211210181523221"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210183435.png" alt="image-20211210183434147"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210183547.png" alt="image-20211210183546502"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210183809.png" alt="image-20211210183808505"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210191307.png" alt="image-20211210191305823"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211210191430.png" alt="image-20211210191428758"></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Kaluna</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://blog.kaluna.top/2021/12/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E4%B9%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">https://blog.kaluna.top/2021/12/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E4%B9%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Redis/">Redis</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210930144213.jpg"><div class="post-qr-code__desc"></div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/12/10/ModbusTCP%E5%8D%8F%E8%AE%AE/"><i class="fa fa-chevron-left">  </i><span>ModbusTCP协议</span></a></div><div class="next-post pull-right"><a href="/2021/12/05/leetcode%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%83%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span>leetcode之数据库练习笔记</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://blog.kaluna.top/2021/12/09/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E4%B9%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/';
+  this.page.identifier = '2021/12/09/Redis设计与实现之读书笔记/';
+  this.page.title = 'Redis设计与实现之读书笔记';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'shortname-pzy8cndfkq' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://shortname-pzy8cndfkq.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2021 By Kaluna</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="icp"><a><span></span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

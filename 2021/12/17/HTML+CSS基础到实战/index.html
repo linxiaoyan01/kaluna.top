@@ -1,0 +1,737 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="HTML+CSS基础到实战"><meta name="keywords" content="HTML,CSS"><meta name="author" content="Kaluna"><meta name="copyright" content="Kaluna"><title>HTML+CSS基础到实战 | 嘿，走钢索的人</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="嘿，走钢索的人" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#迈入前端的第一步"><span class="toc-number">1.</span> <span class="toc-text">迈入前端的第一步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS入门之基本规则"><span class="toc-number">2.</span> <span class="toc-text">CSS入门之基本规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS进阶之布局定位"><span class="toc-number">3.</span> <span class="toc-text">CSS进阶之布局定位</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中布局前置知识"><span class="toc-number">3.1.</span> <span class="toc-text">CSS中布局前置知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中必须掌握的float布局"><span class="toc-number">3.2.</span> <span class="toc-text">CSS中必须掌握的float布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中必须掌握的flex布局"><span class="toc-number">3.3.</span> <span class="toc-text">CSS中必须掌握的flex布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS中必须掌握的position定位"><span class="toc-number">3.4.</span> <span class="toc-text">CSS中必须掌握的position定位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS之经典的三栏布局如何实现"><span class="toc-number">3.5.</span> <span class="toc-text">CSS之经典的三栏布局如何实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS之⽔平垂直居中的常用方法"><span class="toc-number">3.6.</span> <span class="toc-text">CSS之⽔平垂直居中的常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS扩展⾼级知识点之BFC"><span class="toc-number">3.7.</span> <span class="toc-text">CSS扩展⾼级知识点之BFC</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS3常用属性讲解"><span class="toc-number">4.</span> <span class="toc-text">CSS3常用属性讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3边框"><span class="toc-number">4.1.</span> <span class="toc-text">CSS3边框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3渐变"><span class="toc-number">4.2.</span> <span class="toc-text">CSS3渐变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS3文本效果"><span class="toc-number">4.3.</span> <span class="toc-text">CSS3文本效果</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS3网格布局（grid）"><span class="toc-number">5.</span> <span class="toc-text">CSS3网格布局（grid）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在线教育首页多功能实战"><span class="toc-number">6.</span> <span class="toc-text">在线教育首页多功能实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#真实的项目开发是怎么样的以及页面实战分析"><span class="toc-number">6.1.</span> <span class="toc-text">真实的项目开发是怎么样的以及页面实战分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目初始化和阿里巴巴矢量库的使用"><span class="toc-number">6.2.</span> <span class="toc-text">项目初始化和阿里巴巴矢量库的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小滴课堂首页导航栏开发"><span class="toc-number">6.3.</span> <span class="toc-text">小滴课堂首页导航栏开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小滴课堂首页轮播图开发"><span class="toc-number">6.4.</span> <span class="toc-text">小滴课堂首页轮播图开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小滴课堂首页课程列表开发上"><span class="toc-number">6.5.</span> <span class="toc-text">小滴课堂首页课程列表开发上</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小滴课堂首页课程列表开发下"><span class="toc-number">6.6.</span> <span class="toc-text">小滴课堂首页课程列表开发下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小滴课堂首页底部开发"><span class="toc-number">6.7.</span> <span class="toc-text">小滴课堂首页底部开发</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接下来"><span class="toc-number">7.</span> <span class="toc-text">接下来</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Kaluna</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/lxy1866" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">35</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">39</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">18</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">嘿，走钢索的人</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about">About</a><a class="site-page" href="/tags/">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">HTML+CSS基础到实战</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-12-17</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2021/12/17/HTML+CSS%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2021/12/17/HTML+CSS基础到实战/"></span></a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="迈入前端的第一步"><a href="#迈入前端的第一步" class="headerlink" title="迈入前端的第一步"></a>迈入前端的第一步</h1><ul>
+<li><p>独⽴内核的浏览器的分类</p>
+<ul>
+<li>Chrome: Webkit / Blink</li>
+<li>IE: Trident</li>
+<li>Safari：Webkit</li>
+<li>Firefox：Gecko</li>
+<li>Opera: Presto / Blink</li>
+</ul>
+</li>
+<li><p>文档声明</p>
+<ul>
+<li>告诉浏览器网页是以html5版本编写的</li>
+</ul>
+</li>
+<li><p>meta标签</p>
+<ul>
+<li><p>自结束标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta&gt;</span><br><span class="line">&lt;link&gt;</span><br><span class="line">&lt;hr&gt; 一条横线</span><br><span class="line">&lt;img&gt; alt属性：图⽚加载失败或加载时显示的⽂字 title属性 悬浮在图⽚上⾯显示的⽂字</span><br><span class="line">&lt;input&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以提供该网页相关信息,元数据</p>
+</li>
+<li><p>charset=”utf-8”：中文的网页需要用到的声明编码，否则会出现乱码</p>
+</li>
+<li><p>name=”keywords” content=”静夜思,诗词”：提供网页的关键字，关键字用,隔开</p>
+</li>
+<li><p>name=”Description”：描述网页的信息</p>
+</li>
+</ul>
+</li>
+<li><p>空格</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217100740.png" alt="image-20211217100041473"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;nbsp;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语义化标签</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217102206.png" alt="image-20211217102204348"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217102118.png" alt="image-20211217102116764"></p>
+</li>
+<li><p>table元素⾥常⽤的属性</p>
+<ul>
+<li>border(边框)</li>
+<li>cellspacing(规定单元格之间的空白)</li>
+<li>cellpadding(规定单元边沿与其内容之间的空白)</li>
+<li>colspan(⽤于合并列)</li>
+<li>rowspan(⽤于合并⾏)</li>
+</ul>
+</li>
+<li><p>a标签</p>
+<ul>
+<li><p>target属性：brank：打开新的浏览器标签</p>
+</li>
+<li><p>锚点 </p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217102541.png" alt="image-20211217102540507"></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>form标签：使⽤场景需要提交⼀些信息到服务端的时候(前后端联调过程中)</p>
+<ul>
+<li>核⼼元素input (核⼼元素)</li>
+<li>label (提⾼交互体验的)</li>
+<li>select(下拉框)</li>
+<li>textarea(⽂本域)</li>
+<li>button(按钮)</li>
+<li>form(表单元素，提交每个表单项内容)</li>
+</ul>
+</li>
+<li><p>块级元素</p>
+<ul>
+<li><p>块级元素在浏览器显示时，通常会以新行来开始（和结束）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;,&lt;div&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>行内元素</p>
+<ul>
+<li><p>行内元素在显示时通常不会以新行开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;,&lt;span&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="CSS入门之基本规则"><a href="#CSS入门之基本规则" class="headerlink" title="CSS入门之基本规则"></a>CSS入门之基本规则</h1><ul>
+<li>选择器<ul>
+<li>告诉浏览器要设置样式的html元素</li>
+</ul>
+</li>
+<li>声明块<ul>
+<li>⽤于设置样式</li>
+</ul>
+</li>
+<li>层叠样式表</li>
+<li>Viewport<ul>
+<li>将网页的视口设置为完美视口，开发移动端页面时一定要加上</li>
+</ul>
+</li>
+</ul>
+<p><strong>CSS的⼏种写法及推荐写法</strong></p>
+<ul>
+<li>写法<ul>
+<li>内部样式表<ul>
+<li>写在元素的style标签⾥⾯的</li>
+</ul>
+</li>
+<li>内联样式表<ul>
+<li>写在styles属性⾥⾯的</li>
+</ul>
+</li>
+<li>外部样式表<ul>
+<li>link标签将css资源引⼊</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>为什么选择外部样式表<ul>
+<li>解决⻚⾯当中样式重复的问题</li>
+<li>代码分离，利于代码维护和阅读</li>
+<li>浏览器会缓存起来，提⾼⻚⾯响应速度变快了</li>
+</ul>
+</li>
+</ul>
+<p><strong>CSS核⼼之常⻅的选择器及使⽤场景</strong></p>
+<ul>
+<li><p>元素（标签）选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">组合选择器: h1,p&#123;color:red&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类选择器</p>
+<ul>
+<li><p>结合标签选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1.xiaodi &#123;color:red;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多类选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class&#x3D;&quot;xiaodi background&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>链接多个类选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.xiaodi.background&#123;color:red; background-color:black&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>id选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">声明：#important&#123;&#125; </span><br><span class="line">属性：id&#x3D;&quot;important</span><br><span class="line">注意：一个id选择器的属性值在html文档中只能出现一次，避免写js获取id时出现混淆</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通配符选择器*</p>
+</li>
+<li><p>派⽣选择器</p>
+<ul>
+<li><p>后代选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 p&#123;color:red;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>⼦元素选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div&gt;span&#123;font-size:900&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相邻选择器（兄弟）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1+p&#123;background-color:pink;&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>CSS中特殊的选择器—伪类选择器的使⽤</strong></p>
+</li>
+<li><p>特殊的选择器</p>
+<ul>
+<li>伪类选择器<ul>
+<li>不改变任何DOM内容。只是插入了一些修饰类的元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:first-child &#123;&#125;     &#x2F;&#x2F;第一项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:last-child &#123;&#125;      &#x2F;&#x2F;最后一项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nth-child(n) &#123;&#125;    &#x2F;&#x2F;第n项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nth-child(2n+1)&#123;&#125;  &#x2F;&#x2F;奇数项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nth-child(2n) &#123;&#125;   &#x2F;&#x2F;偶数项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:not()              &#x2F;&#x2F;否定伪类 除了第n项</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;color:#FF0000;&#125;     &#x2F;*未访问的链接*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:visited &#123;color:#00FF00;&#125;  &#x2F;*已访问的链接*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:hover &#123;color:#FF00FF;&#125;    &#x2F;*⿏标悬浮后的链接*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:active &#123;color:#0000FF;&#125;   &#x2F;*已选中的链接*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>伪元素选择器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::first-letter  &#x2F;&#x2F;第一个</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::first-line    &#x2F;&#x2F;第一行 只能用于块级元素</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::selection     &#x2F;&#x2F;选中</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::before        &#x2F;&#x2F;在开始位置</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">::after         &#x2F;&#x2F;在结束位置</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135530.png" alt="image-20211217135528860"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135609.png" alt="image-20211217135608118"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135647.png" alt="image-20211217135646421"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135724.png" alt="image-20211217135723309"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135857.png" alt="image-20211217135855719"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135925.png" alt="image-20211217135920788"></p>
+</li>
+</ul>
+<p><strong>CSS基本概念之盒⼦模型</strong></p>
+<p>在CSS⾥⾯，所有的HTML元素你都可以看成是⼀个盒⼦</p>
+<ul>
+<li>盒⼦的内容(content)<ul>
+<li>元素的大小</li>
+</ul>
+</li>
+<li>盒⼦的内边距(padding)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">padding-left:10px   &#x2F;&#x2F;左边距10px</span><br><span class="line">padding-top:10px    &#x2F;&#x2F;上边距10px</span><br><span class="line">padding-right:10px  &#x2F;&#x2F;右边距10px</span><br><span class="line">padding-bottom:10px &#x2F;&#x2F;下边距10%，相对于父级元素的width</span><br><span class="line"></span><br><span class="line">padding:10px 10px 10px 10% &#x2F;&#x2F;等同于上面四行 百分比是对应父标签的大小</span><br><span class="line">padding:5px 10px    &#x2F;&#x2F;上下边距5px、左右边距10px</span><br><span class="line">padding:5px 10px 20px  &#x2F;&#x2F;上边距 左右边距 下边距</span><br><span class="line">padding:10px        &#x2F;&#x2F;上下左右边距10px</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>盒⼦的边框(border)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">border-left:3px solid #000  &#x2F;&#x2F;左边距10px dotted dashed</span><br><span class="line">border-top:3px solid #000 &#x2F;&#x2F;上边距10px</span><br><span class="line">border-right:3px solid #000 &#x2F;&#x2F;右边距10px</span><br><span class="line">border-bottom:3px solid #000  &#x2F;&#x2F;下边距10%，相对于父级元素的width</span><br><span class="line"></span><br><span class="line">border:3px solid #000 &#x2F;&#x2F;等同于上面四行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>盒⼦的外边距(margin)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">margin-left:10px  &#x2F;&#x2F;左边距10px</span><br><span class="line">margin-top:10px   &#x2F;&#x2F;上边距10px</span><br><span class="line">margin-right:10px &#x2F;&#x2F;右边距10px</span><br><span class="line">margin-bottom:10% &#x2F;&#x2F;下边距10%，相对于父级元素的width</span><br><span class="line"></span><br><span class="line">margin:10px 10px 10px 10% &#x2F;&#x2F;等同于上面四行</span><br><span class="line">margin:5px 10px   &#x2F;&#x2F;上下边距5px、左右边距10px</span><br><span class="line">margin:10px       &#x2F;&#x2F;上下左右边距10px</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>盒子怪异模型</p>
+<ul>
+<li><p>W3C标准的盒子模型（标准盒模型 )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxWidth&#x3D;contentWidth</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>IE标准的盒子模型（怪异盒模型）</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing:border-box &#x2F;&#x2F;声明</span><br><span class="line">boxWidth&#x3D;contentWidth+border+padding</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外边距折叠</p>
+<ul>
+<li><p>上下两个兄弟盒子的margin都为正取大，都为负取小，一正一负相加</p>
+</li>
+<li><p>父子元素盒子的margin（假设没有内边距或边框把外边距分隔开），也会合并；</p>
+<p>只有普通文档流中块框的垂直外边距才会发生外边距合并。行内框、浮动框或绝对定位之间的外边距不会合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">解决父子边距合并：</span><br><span class="line">父元素&#123;</span><br><span class="line">  overflow:auto;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">父元素::before&#123;</span><br><span class="line">  display: table;</span><br><span class="line">  content: &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217130140.png" alt="image-20211217130138293"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217122311.png" alt="image-20211217122310155"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217123417.png" alt="image-20211217123415410"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217123628.png" alt="image-20211217123626568"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217123655.png" alt="image-20211217123653721"></p>
+<p>顺时针</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217123744.png" alt="image-20211217123743470"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217124636.png" alt="image-20211217124635120"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217124545.png" alt="image-20211217124544131"></p>
+<ul>
+<li><p>常⽤属性</p>
+<ul>
+<li><p>盒⼦的位置和⼤⼩</p>
+<ul>
+<li><p>尺寸</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">宽度 width: ⻓度|百分⽐|auto</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">⾼度 height</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">边界 margin padding 上右下左|上下左右</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浮动：float</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">定位：position</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">弹性布局：flex</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">盒⼦内容超出部分：overflow：hidden | scroll | auto</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>外观，⻛格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-repeat</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-size</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-position</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-color</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>⽂字属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字体⼤⼩ font-size</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是否加粗 font-weight</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">是不是斜体 font-style</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字体是什么 font-family</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217132157.png" alt="image-20211217132156124"></p>
+<ul>
+<li>CSS全称：层叠样式表(Cascading Style Sheets)</li>
+<li>层叠是⼀个基本特征<ul>
+<li>⼀个css属性被多次声明的时候，会根据优先级或者声明顺序来计算采⽤哪个样式</li>
+</ul>
+</li>
+<li>优先级是怎么计算<ul>
+<li>通配符选择器 1： *</li>
+<li>标签选择器 2：div/span/p/li</li>
+<li>类选择器 3：class</li>
+<li>id选择器 6：id</li>
+<li>行内样式 5</li>
+<li>!important 6（尽量不要在公⽤代码⾥使⽤）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217133321.png" alt="image-20211217133320114"></p>
+<p><strong>CSS中常⻅的可继承的属性</strong></p>
+<ul>
+<li>什么是继承<ul>
+<li>继承了⽗元素的某些属性</li>
+<li>优点：继承可以简化代码，便于维护</li>
+</ul>
+</li>
+<li>默认设置继承的属性<ul>
+<li>⽂字属性，文本缩进、对齐、行高</li>
+</ul>
+</li>
+</ul>
+<p><strong>练习：第二个子元素鼠标悬浮时，字体为红色，背景颜色为绿色，即使子元素个数发生变化都满足</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217135134.png" alt="image-20211217135133499"></p>
+<h1 id="CSS进阶之布局定位"><a href="#CSS进阶之布局定位" class="headerlink" title="CSS进阶之布局定位"></a>CSS进阶之布局定位</h1><h2 id="CSS中布局前置知识"><a href="#CSS中布局前置知识" class="headerlink" title="CSS中布局前置知识"></a>CSS中布局前置知识</h2><ul>
+<li>正常元素怎么布局<ul>
+<li>默认，⼀个块级元素的内容宽度就是其⽗元素的100%，他的⾼度和其内容⾼度⼀致</li>
+<li>⾏内元素它的宽度和⾼度都是根据内容决定的(⽆法设置⾏内元素的宽⾼)<ul>
+<li>可设置display属性，定义元素的类型(css3定义布局)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>元素之间⼜是如何相互影响的呢<ul>
+<li>正常的⽂档布局流<ul>
+<li>每个块级元素会在上个元素下⾯另起⼀⾏</li>
+<li>⾏内元素不会另起⼀⾏</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217142346.png" alt="image-20211217142345254"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217142328.png" alt="image-20211217142326896"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217142412.png" alt="image-20211217142411073"></p>
+<h2 id="CSS中必须掌握的float布局"><a href="#CSS中必须掌握的float布局" class="headerlink" title="CSS中必须掌握的float布局"></a>CSS中必须掌握的float布局</h2><ul>
+<li><p>float布局</p>
+<ul>
+<li><p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">float: none;  &#x2F;&#x2F;默认值，元素不浮动</span><br><span class="line">float: left;  &#x2F;&#x2F;元素像左浮动</span><br><span class="line">float: right; &#x2F;&#x2F;元素像右浮动</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点</p>
+<ul>
+<li>浮动元素会脱离文档流，不再占据文档流空间</li>
+<li>浮动元素彼此之间是从左往右排列，宽度超过一行自动换行</li>
+<li>在浮动元素前面元素不浮动时，浮动元素无法上移</li>
+<li>块级元素和行内元素浮动之后都变成行内块级元素</li>
+<li>浮动元素不会盖住文字，可以设置文字环绕效果</li>
+</ul>
+</li>
+<li><p>清除浮动</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217150508.png" alt="image-20211217150215607"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clear:both;</span><br><span class="line">content:&#39;&#39;;</span><br><span class="line">display:block;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217150256.png" alt="image-20211217150254474"></p>
+</li>
+</ul>
+<h2 id="CSS中必须掌握的flex布局"><a href="#CSS中必须掌握的flex布局" class="headerlink" title="CSS中必须掌握的flex布局"></a>CSS中必须掌握的flex布局</h2><p>flex布局（弹性布局） CSS3知识点</p>
+<ul>
+<li>父元素容器的属性</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217142638.png" alt="image-20211217142632202"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。*&#x2F;</span><br><span class="line">display: flex;</span><br><span class="line"></span><br><span class="line">&#x2F;* 决定主轴的方向（即项目的排列方向）*&#x2F;</span><br><span class="line">flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line"></span><br><span class="line">&#x2F;* 是否换行 *&#x2F;</span><br><span class="line">flex-wrap: nowrap | wrap | wrap-reverse; </span><br><span class="line"></span><br><span class="line">&#x2F;* 定义水平方向对齐方式 *&#x2F;</span><br><span class="line">justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定义垂直方向对齐方式 *&#x2F;</span><br><span class="line">align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定义多个轴线（多行&#x2F;多列）对齐方式 *&#x2F;</span><br><span class="line">align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217151219.png" alt="image-20211217151218111"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217151339.png" alt="image-20211217151337499"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160018.png" alt="image-20211217160017322"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217154945.png" alt="image-20211217154942556"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155020.png" alt="image-20211217155018341"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155104.png" alt="image-20211217155102617"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155132.png" alt="image-20211217155130743"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155236.png" alt="image-20211217155234288"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155252.png" alt="image-20211217155250811"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155340.png" alt="image-20211217155338834"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217155351.png" alt="image-20211217155350226"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160046.png" alt="image-20211217155509167"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160041.png" alt="image-20211217155622917"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160434.png" alt="image-20211217160433366"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160506.png" alt="image-20211217160503362"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160549.png" alt="image-20211217160547545"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217160653.png" alt="image-20211217160652401"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217161315.png" alt="image-20211217161314498"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217161335.png" alt="image-20211217161327428"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217161430.png" alt="image-20211217161429493"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217161710.png" alt="image-20211217161640159"></p>
+<ul>
+<li>子元素容器的属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 定义子元素的排列顺序，默认为0 *&#x2F;</span><br><span class="line">order: -10 | -1 | 0 | 1 | 10;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定义子元素的放大比例，默认为0 *&#x2F;</span><br><span class="line">flex-grow: 0 | 1 | 2 | 3;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定义子元素的缩小比例，默认为1 *&#x2F;</span><br><span class="line">flex-shrink: 0 | 1;</span><br><span class="line"></span><br><span class="line">&#x2F;* 定义了在分配多余空间之前，项目占据的主轴空间 *&#x2F;</span><br><span class="line">flex-basis: &lt;length&gt; | auto;</span><br><span class="line"></span><br><span class="line">&#x2F;* flex-grow, flex-shrink 和 flex-basis的简写 *&#x2F;</span><br><span class="line">flex: 0 1 auto;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>兼容性<ul>
+<li>浏览器ie9及以上</li>
+</ul>
+</li>
+<li>选择float布局 or flex布局？<ul>
+<li>推荐是使用flex布局<ul>
+<li>flex布局易用，布局全面</li>
+<li>float的创建初衷只是为了达到文字环绕的效果，另外需要清除浮动</li>
+<li>现在几乎所有公司的产品使用场景都在浏览器ie9以上</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS中必须掌握的position定位"><a href="#CSS中必须掌握的position定位" class="headerlink" title="CSS中必须掌握的position定位"></a>CSS中必须掌握的position定位</h2><ul>
+<li>也是为布局引⼊的属性</li>
+<li>position常⽤的⼏个值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">position: static   (静态定位)   父元素</span><br><span class="line">position: relative (相对绝对)   父元素</span><br><span class="line">position: absolute (绝对定位)</span><br><span class="line"></span><br><span class="line">position: fixed    (固定定位)   父元素</span><br><span class="line">position: sticky   (粘性定位)   父元素</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217162735.png" alt="image-20211217162733897"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217162752.png" alt="image-20211217162751064"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217162949.png" alt="image-20211217162947293"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217163350.png" alt="image-20211217163348899"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217163510.png" alt="image-20211217163508405"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217211125.png" alt="image-20211217163648535"></p>
+<p>position : sticky</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217163734.png" alt="image-20211217163733279"></p>
+<p>相关的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z-index &#x2F;&#x2F;使⽤场景：当定位的盒⼦重叠在⼀起</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217163953.png" alt="image-20211217163952104"></p>
+<h2 id="CSS之经典的三栏布局如何实现"><a href="#CSS之经典的三栏布局如何实现" class="headerlink" title="CSS之经典的三栏布局如何实现"></a>CSS之经典的三栏布局如何实现</h2><ul>
+<li>问题：⾼度固定，左右两侧的盒⼦宽度为200px，中间⾃适应<ul>
+<li>float</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217164439.png" alt="image-20211217164438224"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217164715.png" alt="image-20211217164713512"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217164849.png" alt="image-20211217164847623"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217164950.png" alt="image-20211217164948331"></p>
+<ul>
+<li><p>position</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217165137.png" alt="image-20211217165136190"></p>
+<ul>
+<li>flex</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217165859.png" alt="image-20211217165425406"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217165856.png" alt="image-20211217165854767"></p>
+</li>
+<li><p>解决</p>
+<ul>
+<li>float实现</li>
+<li>position实现</li>
+<li>flex实现</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS之⽔平垂直居中的常用方法"><a href="#CSS之⽔平垂直居中的常用方法" class="headerlink" title="CSS之⽔平垂直居中的常用方法"></a>CSS之⽔平垂直居中的常用方法</h2><p>如何使⽤CSS实现⽔平垂直居中</p>
+<ul>
+<li>⾏内块元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. line-height</span><br><span class="line">   text-align: center</span><br><span class="line">2. display: flex;</span><br><span class="line">   justify-content: center;</span><br><span class="line">   align-items: center;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217170120.png" alt="image-20211217170118726"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217170304.png" alt="image-20211217170303115"></p>
+<ul>
+<li>块级元素</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. position + margin    清楚子元素的宽高</span><br><span class="line">2. position + transform 不清楚子元素的宽高</span><br><span class="line">3. flex     </span><br><span class="line">4. table-cell           兼容性较差</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217170657.png" alt="image-20211217170656027"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217170822.png" alt="image-20211217170819755"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217171007.png" alt="image-20211217171005821"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217171132.png" alt="image-20211217171131025"></p>
+<h2 id="CSS扩展⾼级知识点之BFC"><a href="#CSS扩展⾼级知识点之BFC" class="headerlink" title="CSS扩展⾼级知识点之BFC"></a>CSS扩展⾼级知识点之BFC</h2><ul>
+<li><p>定义</p>
+<ul>
+<li><strong>块格式化上下⽂</strong>（Block Formatting Context，BFC）是Web⻚⾯的可视化CSS渲染的⼀部分，是块盒⼦的布局过程发⽣的区域，也是浮动元素与其他元素交互的区域。</li>
+<li>即：形成了⼀块封闭的区域，能检测到区域内脱离⽂档流的元素</li>
+</ul>
+</li>
+<li><p>特点</p>
+<ul>
+<li>css中隐含的属性，开启后不会被浮动的元素覆盖</li>
+<li>BFC元素可以包含浮动元素</li>
+<li>BFC元素的子元素和父元素外边距不重叠</li>
+</ul>
+</li>
+<li><p>开启（都会有副作用）</p>
+<ul>
+<li><p>设置元素浮动 float：left</p>
+</li>
+<li><p>设置为行内块元素 display：inline-block</p>
+</li>
+<li><p>overflow：hidden（推荐）</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217181635.png" alt="image-20211217181633482"></p>
+<p>发生重叠</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217182113.png" alt="image-20211217182111245"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217182149.png" alt="image-20211217182147563"></p>
+</li>
+</ul>
+</li>
+<li><p>作⽤</p>
+<ul>
+<li>清除浮动带来的影响</li>
+<li>解决边距塌陷问题(外边距折叠（Margin collapsing）也只会发⽣在属于同⼀BFC的块级元素之间)</li>
+</ul>
+</li>
+</ul>
+<p><strong>实现小滴课堂的悬浮二维码与联系方式</strong></p>
+<p>考察position: fixed定位</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217183150.png" alt="image-20211217183148654"></p>
+<p>箭头的实现</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217183410.png" alt="image-20211217183409094"></p>
+<h1 id="CSS3常用属性讲解"><a href="#CSS3常用属性讲解" class="headerlink" title="CSS3常用属性讲解"></a>CSS3常用属性讲解</h1><h2 id="CSS3边框"><a href="#CSS3边框" class="headerlink" title="CSS3边框"></a>CSS3边框</h2><ul>
+<li><p>圆角</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-radius</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217183835.png" alt="image-20211217183819179"></p>
+</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217183905.png" alt="image-20211217183904452"></p>
+<ul>
+<li><p>盒阴影</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217184125.png" alt="image-20211217184123925"></p>
+<p>box-shadow 第一个值是指向左还是向右，如果为正数则向右，反之则向左，第二个值若为正数则向下，反之向上，第三个值是指虚化度越大越虚</p>
+</li>
+<li><p>边界图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">border-image</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="CSS3渐变"><a href="#CSS3渐变" class="headerlink" title="CSS3渐变"></a>CSS3渐变</h2><ul>
+<li><p>基本语法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 从上到下（默认情况下）*&#x2F;</span><br><span class="line">background-image: linear-gradient(#e66465, #9198e5);</span><br><span class="line"></span><br><span class="line">&#x2F;* 从左到右 *&#x2F;</span><br><span class="line">background-image: linear-gradient(to right, red , yellow);</span><br><span class="line"></span><br><span class="line">&#x2F;* 对角 *&#x2F;</span><br><span class="line">background-image: linear-gradient(to bottom right, red, yellow);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217184542.png" alt="image-20211217184541236"></p>
+</li>
+<li><p>使用角度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 从上到下 *&#x2F;</span><br><span class="line">background-image: linear-gradient(180deg, red, yellow); </span><br><span class="line">&#x2F;* 从左到右 *&#x2F;</span><br><span class="line">background-image: linear-gradient(90deg, red, yellow);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多个颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 从上到下 *&#x2F;</span><br><span class="line">background-image: linear-gradient(red, yellow, green);</span><br><span class="line">&#x2F;* 从左到右 *&#x2F;</span><br><span class="line">background-image: linear-gradient(to right, red, orange, yellow);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>透明度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image: linear-gradient(rgba(255,0,0,0), rgba(255,0,0,1));</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217211402.png" alt="image-20211217184830932"></p>
+</li>
+<li><p>重复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image: repeating-linear-gradient(red, yellow 10%, green 20%);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217185321.png" alt="image-20211217185319867"></p>
+</li>
+</ul>
+<h2 id="CSS3文本效果"><a href="#CSS3文本效果" class="headerlink" title="CSS3文本效果"></a>CSS3文本效果</h2><ul>
+<li><p>文本阴影</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: 5px 5px 5px #FF0000;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文本溢出</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217185653.png" alt="image-20211217185652629"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217185736.png" alt="image-20211217185734974"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217185907.png" alt="image-20211217185902847"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217190102.png" alt="image-20211217190100518"></p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 超过1行省略&#x2F;裁剪 *&#x2F;</span><br><span class="line">overflow: hidden;</span><br><span class="line">white-space: nowrap;</span><br><span class="line">text-overflow: ellipsis | clip; </span><br><span class="line"></span><br><span class="line">&#x2F;* 超过2行省略&#x2F;裁剪 *&#x2F;</span><br><span class="line">overflow: hidden;</span><br><span class="line">text-overflow: ellipsis;</span><br><span class="line">display: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: 2;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>文本换行</p>
+<ul>
+<li><p>长文本换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">word-wrap:break-word;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>单词拆分换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">word-break: break-all;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="CSS3网格布局（grid）"><a href="#CSS3网格布局（grid）" class="headerlink" title="CSS3网格布局（grid）"></a>CSS3网格布局（grid）</h1></li>
+<li><p>应用场景</p>
+<ul>
+<li>flex布局、float布局应用于一维布局，网格布局应用于二位布局</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217190448.png" alt="image-20211217190447184"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217191306.png" alt="image-20211217191304293"></p>
+</li>
+<li><p>父元素属性</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* 使用 *&#x2F;</span><br><span class="line">display: grid;</span><br><span class="line">grid-template-columns: 10px 10px 10px;</span><br><span class="line">grid-template-rows: 10px 10px 10px;</span><br><span class="line"></span><br><span class="line">&#x2F;* 百分比使用 *&#x2F;</span><br><span class="line">display: grid;</span><br><span class="line">grid-template-columns: 33.33% 33.33% 33.33%;</span><br><span class="line">grid-template-rows: 33.33% 33.33% 33.33%;</span><br><span class="line"></span><br><span class="line">&#x2F;* repeat()函数简化 *&#x2F;</span><br><span class="line">display: grid;</span><br><span class="line">grid-template-columns: repeat(3, 33.33%);</span><br><span class="line">grid-template-rows: repeat(3, 33.33%);</span><br></pre></td></tr></table></figure>
+
+<h1 id="在线教育首页多功能实战"><a href="#在线教育首页多功能实战" class="headerlink" title="在线教育首页多功能实战"></a>在线教育首页多功能实战</h1><h2 id="真实的项目开发是怎么样的以及页面实战分析"><a href="#真实的项目开发是怎么样的以及页面实战分析" class="headerlink" title="真实的项目开发是怎么样的以及页面实战分析"></a>真实的项目开发是怎么样的以及页面实战分析</h2><ul>
+<li>真实项目开发流程<ul>
+<li>需求评审</li>
+<li>与UI对接设计图</li>
+<li>开发页面</li>
+<li>与后端程序员协调接口协议</li>
+<li>接入接口数据联调</li>
+<li>开发完成，提交测试环境，自测完成然后提测</li>
+<li>解决bug</li>
+<li>提交预发环境</li>
+<li>产品，测试确认，与后端一起提交上正式环境（上线）</li>
+</ul>
+</li>
+<li>页面分析</li>
+</ul>
+<h2 id="项目初始化和阿里巴巴矢量库的使用"><a href="#项目初始化和阿里巴巴矢量库的使用" class="headerlink" title="项目初始化和阿里巴巴矢量库的使用"></a>项目初始化和阿里巴巴矢量库的使用</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192019.png" alt="image-20211217192017679"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192049.png" alt="image-20211217192047434"></p>
+<ul>
+<li><p>项目初始化</p>
+<ul>
+<li>新建文件夹</li>
+<li>初始化css样式：去掉初始的margin值，li标签的点去掉等等</li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192415.png" alt="image-20211217192413662"></p>
+</li>
+<li><p>阿里巴巴矢量库</p>
+<ul>
+<li><p>地址</p>
+<ul>
+<li><a href="https://www.iconfont.cn/" target="_blank" rel="noopener">https://www.iconfont.cn/</a></li>
+</ul>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192805.png" alt="image-20211217192803754"></p>
+</li>
+<li><p>流程</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 注册</span><br><span class="line">- 搜索图片</span><br><span class="line">- 加入购物车</span><br><span class="line">- 添加进项目、选择symbol格式</span><br><span class="line">- 生成在线链接</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引入第三方icon </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 根文件html引入  注意：xxxxxxxx是自己项目的在线链接</span><br><span class="line">&lt;script src&#x3D;&quot;http:xxxxxxxx&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 使用 注意 xxxx是icon的代码</span><br><span class="line">&lt;svg class&#x3D;&quot;icon&quot; aria-hidden&#x3D;&quot;true&quot;&gt;</span><br><span class="line">    &lt;use xlink:href&#x3D;&quot;#xxxx&quot;&gt;&lt;&#x2F;use&gt;</span><br><span class="line">&lt;&#x2F;svg&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192945.png" alt="image-20211217192944166"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217192928.png" alt="image-20211217192926559"></p>
+</li>
+</ul>
+<h2 id="小滴课堂首页导航栏开发"><a href="#小滴课堂首页导航栏开发" class="headerlink" title="小滴课堂首页导航栏开发"></a>小滴课堂首页导航栏开发</h2><p><strong>首页导航栏的开发</strong></p>
+<p> <img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217143448.png" alt="image-20211217143447072"></p>
+<h2 id="小滴课堂首页轮播图开发"><a href="#小滴课堂首页轮播图开发" class="headerlink" title="小滴课堂首页轮播图开发"></a>小滴课堂首页轮播图开发</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217200501.png" alt="image-20211217200458785"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217200517.png" alt="image-20211217200515173"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217143526.png" alt="image-20211217143525571"></p>
+<h2 id="小滴课堂首页课程列表开发上"><a href="#小滴课堂首页课程列表开发上" class="headerlink" title="小滴课堂首页课程列表开发上"></a>小滴课堂首页课程列表开发上</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217143545.png" alt="image-20211217143543579"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217203137.png" alt="image-20211217203135813"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217203514.png" alt="image-20211217203512400"></p>
+<h2 id="小滴课堂首页课程列表开发下"><a href="#小滴课堂首页课程列表开发下" class="headerlink" title="小滴课堂首页课程列表开发下"></a>小滴课堂首页课程列表开发下</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217211452.png" alt="image-20211217143556092"></p>
+<h2 id="小滴课堂首页底部开发"><a href="#小滴课堂首页底部开发" class="headerlink" title="小滴课堂首页底部开发"></a>小滴课堂首页底部开发</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211217143609.png" alt="image-20211217143607468"></p>
+<h1 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h1><ul>
+<li>项⽬开发过程<ul>
+<li>先分析⼀个布局，分块细⼀点</li>
+<li>写对应的注释</li>
+<li>考虑周全⼀点</li>
+</ul>
+</li>
+<li>项⽬遇到的问题<ul>
+<li>布局乱了怎么办<ul>
+<li>检查其他盒⼦的⾼度是否影响了</li>
+</ul>
+</li>
+<li>换着思路实现问题，⽐如我们的伪类来实现布局</li>
+<li>学会iconfont使⽤</li>
+<li>未来的规划<ul>
+<li>html + css(最基本的)</li>
+<li>js(跟⽹⻚交互使⽤的) javascript<ul>
+<li>Vue.js</li>
+<li>React.js</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>项⽬的构建<ul>
+<li>git(代码管理⼯具)</li>
+<li>webpack(打包⼯具，打包资源代码)</li>
+</ul>
+</li>
+<li>后端<ul>
+<li>node.js(多了操作数据库的api)</li>
+</ul>
+</li>
+<li>学习技巧<ul>
+<li>只有当你的实际练习（写代码）⼤⼤于你的理论学习时间， 你才会有进步</li>
+<li>锻炼下⾃⼰独⽴学习能⼒(必须学会看懂编辑器的提示，学会翻译)</li>
+<li>多多看mdn⽂档，博⽂只能参考</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Kaluna</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://blog.kaluna.top/2021/12/17/HTML+CSS%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98/">https://blog.kaluna.top/2021/12/17/HTML+CSS%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTML/">HTML</a><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210930144213.jpg"><div class="post-qr-code__desc"></div></div></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/12/18/Javascript%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98/"><i class="fa fa-chevron-left">  </i><span>Javascript基础到实战</span></a></div><div class="next-post pull-right"><a href="/2021/12/10/ModbusTCP%E5%8D%8F%E8%AE%AE/"><span>ModbusTCP协议</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://blog.kaluna.top/2021/12/17/HTML+CSS%E5%9F%BA%E7%A1%80%E5%88%B0%E5%AE%9E%E6%88%98/';
+  this.page.identifier = '2021/12/17/HTML+CSS基础到实战/';
+  this.page.title = 'HTML+CSS基础到实战';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'shortname-pzy8cndfkq' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://shortname-pzy8cndfkq.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2021 By Kaluna</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="icp"><a><span></span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
