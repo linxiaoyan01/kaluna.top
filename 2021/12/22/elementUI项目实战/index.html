@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="elementUI项目实战"><meta name="keywords" content="elementUI"><meta name="author" content="Kaluna"><meta name="copyright" content="Kaluna"><title>elementUI项目实战 | 嘿，走钢索的人</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="嘿，走钢索的人" type="application/atom+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#核⼼知识"><span class="toc-number">1.</span> <span class="toc-text">核⼼知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-config-js常⽤配置"><span class="toc-number">1.1.</span> <span class="toc-text">vue.config.js常⽤配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue中组件间传值常用的几种方式"><span class="toc-number">1.2.</span> <span class="toc-text">vue中组件间传值常用的几种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单页面应用的控制中心—vue-router"><span class="toc-number">1.3.</span> <span class="toc-text">单页面应用的控制中心—vue-router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#状态管理中心—vuex的基础和高级用法"><span class="toc-number">1.4.</span> <span class="toc-text">状态管理中心—vuex的基础和高级用法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Element常⽤组件"><span class="toc-number">2.</span> <span class="toc-text">Element常⽤组件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#布局组件"><span class="toc-number">2.1.</span> <span class="toc-text">布局组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹出类型组件"><span class="toc-number">2.2.</span> <span class="toc-text">弹出类型组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格组件"><span class="toc-number">2.3.</span> <span class="toc-text">表格组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表单组件"><span class="toc-number">2.4.</span> <span class="toc-text">表单组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战项⽬之环境准备及配置改装"><span class="toc-number">3.</span> <span class="toc-text">实战项⽬之环境准备及配置改装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项⽬搭建及技术选型"><span class="toc-number">3.1.</span> <span class="toc-text">项⽬搭建及技术选型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置项⽬的基本环境及项⽬⽬录结构"><span class="toc-number">3.2.</span> <span class="toc-text">配置项⽬的基本环境及项⽬⽬录结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后台视频管理系统之公⽤部分开发"><span class="toc-number">4.</span> <span class="toc-text">后台视频管理系统之公⽤部分开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#需求分析及模块划分"><span class="toc-number">4.1.</span> <span class="toc-text">需求分析及模块划分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由设计及左侧公⽤导航菜单开发"><span class="toc-number">4.2.</span> <span class="toc-text">路由设计及左侧公⽤导航菜单开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顶部导航菜单及与左侧导航联动的⾯包屑实现-下"><span class="toc-number">4.3.</span> <span class="toc-text">顶部导航菜单及与左侧导航联动的⾯包屑实现(下)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vuex中的-tab-js"><span class="toc-number">4.4.</span> <span class="toc-text">vuex中的 tab.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使⽤vuex实现切换tab⻚功能"><span class="toc-number">4.5.</span> <span class="toc-text">使⽤vuex实现切换tab⻚功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构建⻚⾯组件，连通公共组件"><span class="toc-number">4.6.</span> <span class="toc-text">构建⻚⾯组件，连通公共组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#⻚⾯布局整体样式优化"><span class="toc-number">4.7.</span> <span class="toc-text">⻚⾯布局整体样式优化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后台视频管理系统之⾸⻚开发"><span class="toc-number">5.</span> <span class="toc-text">后台视频管理系统之⾸⻚开发</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍mock-js及axios全局配置"><span class="toc-number">5.1.</span> <span class="toc-text">介绍mock.js及axios全局配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使⽤Mock随机返回主⻚数据"><span class="toc-number">5.2.</span> <span class="toc-text">使⽤Mock随机返回主⻚数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使⽤element布局组件实现⾸⻚布局"><span class="toc-number">5.3.</span> <span class="toc-text">使⽤element布局组件实现⾸⻚布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成⾸⻚除图表外的内容"><span class="toc-number">5.4.</span> <span class="toc-text">完成⾸⻚除图表外的内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成⾸⻚table部分及ECharts"><span class="toc-number">5.5.</span> <span class="toc-text">完成⾸⻚table部分及ECharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#封装⼀个EChart组件的⼀些想法"><span class="toc-number">5.6.</span> <span class="toc-text">封装⼀个EChart组件的⼀些想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上⼿封装⼀个EChart组件并处理数据展示图表"><span class="toc-number">5.7.</span> <span class="toc-text">上⼿封装⼀个EChart组件并处理数据展示图表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改EChart组件样式及⾃适应图表-上"><span class="toc-number">5.8.</span> <span class="toc-text">修改EChart组件样式及⾃适应图表(上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改EChart组件样式及⾃适应图表-下"><span class="toc-number">5.9.</span> <span class="toc-text">修改EChart组件样式及⾃适应图表(下)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Echart组件封装总结"><span class="toc-number">6.</span> <span class="toc-text">Echart组件封装总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#⽤户管理⻚及详解权限管理"><span class="toc-number">7.</span> <span class="toc-text">⽤户管理⻚及详解权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#⽤户管理⻚"><span class="toc-number">7.1.</span> <span class="toc-text">⽤户管理⻚</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更完善的表单组件封装"><span class="toc-number">7.2.</span> <span class="toc-text">更完善的表单组件封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通⽤表格组件封装"><span class="toc-number">7.3.</span> <span class="toc-text">通⽤表格组件封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完成表格组件的封装"><span class="toc-number">7.4.</span> <span class="toc-text">完成表格组件的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#⽤户管理⻚⻚⾯功能实现-上"><span class="toc-number">7.5.</span> <span class="toc-text">⽤户管理⻚⻚⾯功能实现(上)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#⽤户管理⻚⻚⾯功能实现-下"><span class="toc-number">7.6.</span> <span class="toc-text">⽤户管理⻚⻚⾯功能实现(下)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#企业开发之权限管理"><span class="toc-number">7.7.</span> <span class="toc-text">企业开发之权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理之动态返回菜单的实现"><span class="toc-number">7.8.</span> <span class="toc-text">权限管理之动态返回菜单的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理之路由守卫判断⽤户登录状态"><span class="toc-number">7.9.</span> <span class="toc-text">权限管理之路由守卫判断⽤户登录状态</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项⽬总结"><span class="toc-number">8.</span> <span class="toc-text">项⽬总结</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Kaluna</div><div class="author-info__description text-center"></div><div class="follow-button"><a href="https://github.com/lxy1866" target="_blank" rel="noopener">Follow Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">36</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">40</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">18</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">嘿，走钢索的人</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about">About</a><a class="site-page" href="/tags/">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">elementUI项目实战</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-12-22</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="post-meta__separator">|</span><i class="fa fa-comment-o post-meta__icon" aria-hidden="true"></i><a href="/2021/12/22/elementUI%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/#disqus_thread"><span class="disqus-comment-count" data-disqus-identifier="2021/12/22/elementUI项目实战/"></span></a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="核⼼知识"><a href="#核⼼知识" class="headerlink" title="核⼼知识"></a>核⼼知识</h1><p>需要对webpack进⾏配置的话，要⼿动在根 ⽬录新建⼀个vue.config.js⽂件</p>
+<h2 id="vue-config-js常⽤配置"><a href="#vue-config-js常⽤配置" class="headerlink" title="vue.config.js常⽤配置"></a>vue.config.js常⽤配置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vue.config.js 常⽤配置</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line"> <span class="comment">// 基本路径, vue.cli 3.3以前请使⽤baseUrl</span></span><br><span class="line"> publicPath: <span class="string">'/'</span>,</span><br><span class="line"> <span class="comment">// 输出⽂件⽬录</span></span><br><span class="line"> outputDir: <span class="string">'dist'</span>,</span><br><span class="line"><span class="comment">// ⽤于嵌套⽣成的静态资产（js，css，img，fonts）的⽬录。</span></span><br><span class="line"> assetsDir: <span class="string">''</span>,</span><br><span class="line"> <span class="comment">// ⽣产环境sourceMap</span></span><br><span class="line"> productionSourceMap: <span class="literal">true</span>,</span><br><span class="line"> <span class="comment">// webpack配置</span></span><br><span class="line"> configureWebpack: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;,</span><br><span class="line"> chainWebpack: <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;,</span><br><span class="line"> <span class="comment">// css相关配置</span></span><br><span class="line"> css: &#123;</span><br><span class="line"> <span class="comment">// 启⽤ CSS modules</span></span><br><span class="line"> modules: <span class="literal">false</span>,</span><br><span class="line"> <span class="comment">// 是否使⽤css分离插件</span></span><br><span class="line"> extract: <span class="literal">true</span>,</span><br><span class="line"> <span class="comment">// 开启 CSS source maps?</span></span><br><span class="line"> sourceMap: <span class="literal">false</span>,</span><br><span class="line"> <span class="comment">// css预设器配置项</span></span><br><span class="line"> loaderOptions: &#123;&#125;,</span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">// webpack-dev-server 相关配置</span></span><br><span class="line"> devServer: &#123;</span><br><span class="line"> host: <span class="string">'0.0.0.0'</span>,</span><br><span class="line"> port: <span class="number">8080</span>,</span><br><span class="line"> proxy: &#123;&#125;, <span class="comment">// 设置代理</span></span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">// 第三⽅插件配置</span></span><br><span class="line"> pluginOptions: &#123;</span><br><span class="line"> <span class="comment">// ...</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="vue中组件间传值常用的几种方式"><a href="#vue中组件间传值常用的几种方式" class="headerlink" title="vue中组件间传值常用的几种方式"></a>vue中组件间传值常用的几种方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">⽗⼦组件传值 </span><br><span class="line"></span><br><span class="line">props &#x2F; $emit ⼦组件中通过定义props接收⽗组件中通过v-bind绑定的数据 ⽗组件中通过监听⼦组件中$emit的⾃定义事件接收数据 </span><br><span class="line">$parent &#x2F; children ⼦组件中通过this.$parent这个对象获取⽗组件中的数据 ⽗组件中通过this.$children这个数组获取⼦组件中的数据 </span><br><span class="line">$ref ⽗组件中定义⼦组件中的ref属性后，通过this.$refs.定义的属性名获取⼦组件数据</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222171459.png" alt="image-20211222171457144"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222170612.png" alt="image-20211222170611468"></p>
+<p>在mounted里面的两种方式都可以得到子组件，这两种方式不一样的地方就是ref给组件命名了，容易找到这个组件</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222171036.png" alt="image-20211222171033507"></p>
+<p>⾮⽗⼦间传值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//事件总线</span></span><br><span class="line"><span class="comment">// 原理上就是建⽴⼀个公共的js⽂件，专⻔⽤来传递消息</span></span><br><span class="line"><span class="comment">// bus.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vue;</span><br><span class="line"><span class="comment">// 在需要传递消息的地⽅引⼊</span></span><br><span class="line"><span class="keyword">import</span> bus <span class="keyword">from</span> <span class="string">'./bus.js'</span></span><br><span class="line"><span class="comment">// 传递消息</span></span><br><span class="line">bus.$emit(<span class="string">'msg'</span>, val)</span><br><span class="line"><span class="comment">// 接受消息</span></span><br><span class="line">bus.$emit(<span class="string">'msg'</span>, val =&gt; &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(val)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222220647.png" alt="image-20211222220637800"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222220920.png" alt="image-20211222220919287"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211222221150.png" alt="image-20211222221148881"></p>
+<h2 id="单页面应用的控制中心—vue-router"><a href="#单页面应用的控制中心—vue-router" class="headerlink" title="单页面应用的控制中心—vue-router"></a>单页面应用的控制中心—vue-router</h2><p><strong>路由的基本配置</strong> </p>
+<p>基本参数 path 路由的访问路径。即url 。component 访问路径对应的组件 </p>
+<p>扩展参数 name 路由指定命名，设置后可⽤params传参及使⽤name进⾏路由跳转</p>
+<p><strong>路由的跳转</strong> </p>
+<ul>
+<li><p>router-link标签跳转 </p>
+</li>
+<li><p>编程式导航</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// route可以是对象，或者是字符串</span></span><br><span class="line"><span class="comment">// 对象的时候可通过路由的path或者name进⾏跳转</span></span><br><span class="line"><span class="comment">// 字符串的话只能是路由的path</span></span><br><span class="line"><span class="keyword">this</span>.$router.push(route)</span><br><span class="line"><span class="comment">// 路由传递参数, query和path配合， params和name配合</span></span><br><span class="line">query: <span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">query</span>: &#123;<span class="attr">id</span>: <span class="number">2</span>&#125;&#125;)</span><br><span class="line">params: <span class="keyword">this</span>.$router.push(&#123;<span class="attr">name</span>: <span class="string">'home'</span>, <span class="attr">params</span>: &#123;<span class="attr">id</span>: <span class="number">2</span>&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>动态路由</strong> </p>
+<p>什么是动态路由 组件是同⼀个，只是通过不同的url参数渲染不同的数据 路径参数”使⽤冒号” : 标记</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> path: &#39;&#x2F;home&#x2F;:id&#39;,</span><br><span class="line"> component: home</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在path⾥显式声明后，通过params传参后，参数不丢失同时参数被设置成必传参数</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223104338.png" alt="image-20211223104336642"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223104256.png" alt="image-20211223104254111"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223104415.png" alt="image-20211223104414389"></p>
+<p><strong>嵌套路由</strong></p>
+<p>⽬的： 组件中嵌套不同组件 </p>
+<p>实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在需要嵌套的路由中补充children字段</span><br><span class="line">&#123;</span><br><span class="line"> path: &#39;&#x2F;home&#x2F;:id&#39;,</span><br><span class="line"> component: home,</span><br><span class="line"> children: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223104539.png" alt="image-20211223104538169"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223105036.png" alt="image-20211223105034678"></p>
+<p><strong>导航守卫</strong> </p>
+<p>通过router中的beforeEach注册全局守卫，每次切换路由时触发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; to, from是路由对象，我们在路由⾥定义的参数都可以在这⾥取到，例如to.path或</span><br><span class="line">from.name</span><br><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line"> &#x2F;&#x2F; ...</span><br><span class="line">next()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>参数 </p>
+<p>to： 将进⼊的路由对象 </p>
+<p>from： 将离开的路由对象 </p>
+<p>next() 确认完成操作，最后⼀定要调⽤，不然路由就不会进⾏切换</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223105240.png" alt="image-20211223105238643"></p>
+<p><strong>路由懒加载</strong> </p>
+<p>提⾼⻚⾯加载速度 </p>
+<p>避免进⼊项⽬后加载全部组件 </p>
+<p>在路由中的component中设置函数，⽤import⽅式进⾏使⽤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">component: () &#x3D;&gt; import(&#39;.&#x2F;views&#x2F;Home.vue&#39;),</span><br></pre></td></tr></table></figure>
+
+<h2 id="状态管理中心—vuex的基础和高级用法"><a href="#状态管理中心—vuex的基础和高级用法" class="headerlink" title="状态管理中心—vuex的基础和高级用法"></a>状态管理中心—vuex的基础和高级用法</h2><p>State 数据，存放⼀些公⽤部分的数据 </p>
+<p>Mutations 数据怎么改变，定义改变state的⼀些⽅法 </p>
+<p>Actions 异步改变， 如果需要异步改变state，则在这书写</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223094221.png" alt="image-20211223094219835"></p>
+<p>vuex⾥包含的基本参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export default &#123;</span><br><span class="line"> &#x2F;&#x2F; 组件间公共数据部分</span><br><span class="line"> state: &#123;&#125;,</span><br><span class="line"> &#x2F;&#x2F; 需要改变state中的数据时，要在mutation⾥定义改变的⽅法</span><br><span class="line"> mutations: &#123;&#125;,</span><br><span class="line"> &#x2F;&#x2F; 当改变state中的数据是异步操作时，在action⾥定义</span><br><span class="line"> actions: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223105728.png" alt="image-20211223105726975"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223110019.png" alt="image-20211223110017668"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223110149.png" alt="image-20211223110148065"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223110428.png" alt="image-20211223110426847"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223110656.png" alt="image-20211223110655125"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223110743.png" alt="image-20211223110741436"></p>
+<p><strong>vuex中的计算属性—Getters</strong> </p>
+<p>当你需要依赖vuex⾥的state中的数据，做进⼀步处理时使⽤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">state: &#123;</span><br><span class="line"> count: 0,</span><br><span class="line">&#125;,</span><br><span class="line">&#x2F;&#x2F; 根据state中的count进⼀步处理，计算双倍值</span><br><span class="line">getters: &#123;</span><br><span class="line"> doubleCount (state) &#123;</span><br><span class="line"> return state.count * 2</span><br><span class="line"> &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223111301.png" alt="image-20211223111300102"></p>
+<p><strong>模块化概念—Modules</strong></p>
+<p>当vuex⾥的数据⼗分庞⼤时，可根据存放的数据所属模块进⾏划分</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="comment">// 第⼀步 引⼊模块</span></span><br><span class="line"><span class="keyword">import</span> text <span class="keyword">from</span> <span class="string">'./text'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"><span class="comment">// 第⼆步 在初始化store时，加载模块</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    modules: &#123;</span><br><span class="line">        text</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>count模块的内容</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223111958.png" alt="image-20211223111957042"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223111527.png" alt="image-20211223111526182"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223111641.png" alt="image-20211223111639677"></p>
+<p><img src="C:/Users/86158/AppData/Roaming/Typora/typora-user-images/image-20211223111808504.png" alt="image-20211223111808504"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223111843.png" alt="image-20211223111842214"></p>
+<h1 id="Element常⽤组件"><a href="#Element常⽤组件" class="headerlink" title="Element常⽤组件"></a>Element常⽤组件</h1><h2 id="布局组件"><a href="#布局组件" class="headerlink" title="布局组件"></a>布局组件</h2><p>yarn add element-ui -S</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223112236.png" alt="image-20211223112235430"></p>
+<p><img src="C:/Users/86158/AppData/Roaming/Typora/typora-user-images/image-20211223112433090.png" alt="image-20211223112433090"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223112529.png" alt="image-20211223112528114"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223112944.png" alt="image-20211223112942353"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223113055.png" alt="image-20211223113054109"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223113339.png" alt="image-20211223113337737"></p>
+<p>布局组件 el-row、el-col el-container、el-header、el-aside、el-main、el-footer</p>
+<p>常⽤属性 span gutter(分隔作用的)</p>
+<p>如何构建5等分布局</p>
+<p>布局⼩试</p>
+<h2 id="弹出类型组件"><a href="#弹出类型组件" class="headerlink" title="弹出类型组件"></a>弹出类型组件</h2><p>常⽤弹出组件 el-dialog el-popover </p>
+<p>sync修饰符的作⽤ 示例：ElementUI中的el-dialog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 第⼀种写法</span><br><span class="line">&lt;el-dialog :visible.sync&#x3D;&quot;dialogVisible&quot;&gt;</span><br><span class="line">&#x2F;&#x2F; 第⼆种写法</span><br><span class="line">&lt;el-dialog :visible&#x3D;&quot;dialogVisible&quot; :before-close&#x3D;&quot;beforeClose&quot;&gt;</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F; 第⼀种写法关闭或是点击空⽩处⽆需特别处理，el-dialog组件内部会修改当前值状态，通</span><br><span class="line">过.sync修饰符传递给⽗组件；</span><br><span class="line">&#x2F;&#x2F; 第⼆种写法，需要再beforeClose⽅法内⼿动处理this.dialogVisible &#x3D; false。</span><br></pre></td></tr></table></figure>
+
+<p>dialog组件中的插槽 ：title footer</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223114306.png" alt="image-20211223114305665"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223114239.png" alt="image-20211223114238643"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223115122.png" alt="image-20211223115121222"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223115227.png" alt="image-20211223115225599"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223115516.png" alt="image-20211223115514904"></p>
+<h2 id="表格组件"><a href="#表格组件" class="headerlink" title="表格组件"></a>表格组件</h2><p>基础表格 在 Table 组件中，每⼀个表格由⼀个 Table-Column 组件构成，也就是表格的列</p>
+<p><strong>表格常⽤属性介绍</strong></p>
+<p>height 给表格设置⾼度，同时固定表头 </p>
+<p>show-header 设置是否显示表头 </p>
+<p>row-class-name 设置⼀个函数或者固定的名字作为⾏的类名 </p>
+<p>border 是否显示表格竖直⽅向的边框，设置后可通过改变边框设置列宽</p>
+<p><strong>列常⽤属性介绍</strong></p>
+<p>label 当前列的表头名称 </p>
+<p>prop 传⼊的表格json数据的key值 </p>
+<p>show-overflow-tooltip 是否设置⽂字超出列宽时悬浮显示完整内容</p>
+<p><strong>通过v-for封装适⽤性更好的表格</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223130228.png" alt="image-20211223130225793"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223130446.png" alt="image-20211223130445126"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223130856.png" alt="image-20211223130852963"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223131021.png" alt="image-20211223131019863"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">props &#x2F; $emit ⼦组件中通过定义props接收⽗组件中通过v-bind绑定的数据 ⽗组件中通过监听⼦组件中$emit的⾃定义事件接收数据</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223131808.png" alt="image-20211223131806913"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223132105.png" alt="image-20211223132104087"></p>
+<h2 id="表单组件"><a href="#表单组件" class="headerlink" title="表单组件"></a>表单组件</h2><p><strong>基础表单</strong> 在 Form 组件中，每⼀个表单域由⼀个 Form-Item 组件构成，Form-item可以是下拉框、输 ⼊框、⽇期选择器等各种表单组件 </p>
+<p><strong>添加表单验证</strong> 封装表单组件 观察基础表单 <strong>总结⼀个表单组件动态的参数有哪些</strong> </p>
+<p>最基础：label，model、type </p>
+<p>扩展：rule、placeholder、其他配置(⾃动补全，可清除等) 定义循环的数据结构 数组对象</p>
+<p><strong>封装表单组件</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223140617.png" alt="image-20211223140616559"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223140756.png" alt="image-20211223140755520"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223141248.png" alt="image-20211223141247697"></p>
+<p><strong>form对象访问属性可以用[]这个来访问，有点奇特</strong></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223143147.png" alt="image-20211223143142875"></p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223142935.png" alt="image-20211223142934169"></p>
+<h1 id="实战项⽬之环境准备及配置改装"><a href="#实战项⽬之环境准备及配置改装" class="headerlink" title="实战项⽬之环境准备及配置改装"></a>实战项⽬之环境准备及配置改装</h1><h2 id="项⽬搭建及技术选型"><a href="#项⽬搭建及技术选型" class="headerlink" title="项⽬搭建及技术选型"></a>项⽬搭建及技术选型</h2><p>通过命令⾏创建项⽬ Vue create &lt;项⽬名&gt; ⼿动配置项⽬，上下键移动光标后，回⻋即可</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223095045.png" alt="image-20211223095044017"></p>
+<p>选择需要的配置 </p>
+<p>babel转译js的新特性，兼容低版本浏览器 </p>
+<p>CSS预处理器，设置全局变量 </p>
+<p>ESLint检查代码写法是否规范</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223095111.png" alt="image-20211223095110670"></p>
+<p>是否使⽤</p>
+<h2 id="配置项⽬的基本环境及项⽬⽬录结构"><a href="#配置项⽬的基本环境及项⽬⽬录结构" class="headerlink" title="配置项⽬的基本环境及项⽬⽬录结构"></a>配置项⽬的基本环境及项⽬⽬录结构</h2><p>配置项⽬按eslint规范格式化代码 vscode下载 ESlint , Prettier , Vetur 插件 </p>
+<p>打开vscode的设置</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223095159.png" alt="image-20211223095158155"></p>
+<p>选择扩展中的ESLint，之后点击在setting.json中编辑</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223095214.png" alt="image-20211223095212669"></p>
+<p>添加如图配置</p>
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223095240.png" alt="image-20211223095238734"></p>
+<p><strong>可⾃定义eslint的⼀些规则</strong> </p>
+<p>在 .eslintrc 中覆盖prettier规则即可，覆盖是为了防⽌冲突 </p>
+<p>在rules⾥配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rules: &#123;</span><br><span class="line">    &#39;no-console&#39;: process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39; ? &#39;error&#39;</span><br><span class="line">    : &#39;off&#39;,</span><br><span class="line">    &#39;no-debugger&#39;: process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39; ? &#39;error&#39;</span><br><span class="line">    : &#39;off&#39;,</span><br><span class="line">    &#x2F;&#x2F; 添加⾃定义规则</span><br><span class="line">    &#39;prettier&#x2F;prettier&#39;: [</span><br><span class="line">        &#x2F;&#x2F; eslint校验不成功后，error或2则报错，warn或1则警告，off或0则⽆提示</span><br><span class="line">        &#39;error&#39;,</span><br><span class="line">         &#123;</span><br><span class="line">           singleQuote: true,</span><br><span class="line">           semi: false</span><br><span class="line">         &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置完成后可运⾏ npm run lint 格式化全部⽂件，或者保存后⾃动格式化代码 </li>
+<li>router部分模块化 </li>
+<li>vuex部分模块化 </li>
+<li>调整项⽬⽬录 </li>
+<li>删除多余代码</li>
+</ul>
+<p><strong>项⽬⽬录结构调整</strong> </p>
+<p><strong>配置scss全局变量</strong> </p>
+<ul>
+<li>在项⽬的根⽬录下新建 vue.config.js </li>
+<li>新建 _variable.scss ⽂件 </li>
+<li>在 vue.config.js ⽂件进⾏如下配置</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    &#x2F;&#x2F; 配置项⽬启动端⼝及⾃动打开浏览器</span><br><span class="line">    devServer: &#123;</span><br><span class="line">        port: 3333,</span><br><span class="line">        open: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F; 配置scss全局变量</span><br><span class="line">    css: &#123;</span><br><span class="line">        loaderOptions: &#123;</span><br><span class="line">            sass: &#123;</span><br><span class="line">                data: &#96;@import &quot;@&#x2F;assets&#x2F;scss&#x2F;_variable.scss&quot;;&#96;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="后台视频管理系统之公⽤部分开发"><a href="#后台视频管理系统之公⽤部分开发" class="headerlink" title="后台视频管理系统之公⽤部分开发"></a>后台视频管理系统之公⽤部分开发</h1><h2 id="需求分析及模块划分"><a href="#需求分析及模块划分" class="headerlink" title="需求分析及模块划分"></a>需求分析及模块划分</h2><p><strong>分析视频管理后台需要的功能</strong> </p>
+<ul>
+<li><p>可视化展示数据 </p>
+<ul>
+<li><p>视频的成交量 </p>
+</li>
+<li><p>⽤户总量 </p>
+</li>
+<li><p>订单总额 </p>
+</li>
+</ul>
+</li>
+<li><p>登录⻚ </p>
+</li>
+<li><p>视频管理 </p>
+<ul>
+<li><p>上传视频 </p>
+</li>
+<li><p>更新视频 </p>
+</li>
+<li><p>删除视频 </p>
+</li>
+<li><p>查看已有视频 </p>
+</li>
+</ul>
+</li>
+<li><p>⽤户管理 </p>
+<ul>
+<li><p>更新⽤户信息 </p>
+</li>
+<li><p>删除⽤户</p>
+</li>
+<li><p>新增⽤户 </p>
+</li>
+<li><p>权限管理 </p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>设计对应⻚⾯</strong> </p>
+<p>⾸⻚⽤来展示数据 </p>
+<ul>
+<li>使⽤Echart柱状图、折线图及饼图展示 </li>
+</ul>
+<p>视频管理⻚、⽤户管理⻚ </p>
+<ul>
+<li>选⽤el-table及el-form展示和编辑数据 </li>
+<li>el-dialog组件实现编辑和新增功能</li>
+</ul>
+<h2 id="路由设计及左侧公⽤导航菜单开发"><a href="#路由设计及左侧公⽤导航菜单开发" class="headerlink" title="路由设计及左侧公⽤导航菜单开发"></a>路由设计及左侧公⽤导航菜单开发</h2><p>新建 Main.vue 组件放置公共部分组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">&lt;el-container&gt;</span><br><span class="line">    &lt;el-aside&gt;&lt;common-aside&gt;&lt;&#x2F;common-aside&gt;&lt;&#x2F;el-aside&gt;</span><br><span class="line">    &lt;el-container&gt;</span><br><span class="line">        &lt;el-header&gt;&lt;common-header&gt;&lt;&#x2F;common-header&gt;&lt;&#x2F;el-header&gt;</span><br><span class="line">        &lt;common-tab&gt;&lt;&#x2F;common-tab&gt;</span><br><span class="line">        &lt;el-main&gt;</span><br><span class="line">            &lt;router-view &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;el-main&gt;</span><br><span class="line">    &lt;&#x2F;el-container&gt;</span><br><span class="line">    &lt;&#x2F;el-container&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    import CommonHeader from &#39;..&#x2F;components&#x2F;CommonHeader&#39;</span><br><span class="line">    import CommonAside from &#39;..&#x2F;components&#x2F;CommonAside&#39;</span><br><span class="line">    import CommonTab from &#39;..&#x2F;components&#x2F;CommonTab&#39;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>建⽴⻚⾯组件 </p>
+<ul>
+<li>在 views/Home 下建⽴ Home.vue </li>
+<li>在 views/UserManage 下建⽴ UserManage.vue </li>
+<li>在 views/VideoManage 下建⽴ VideoManage.vue </li>
+<li>在 views/Other 下建⽴ PageOne.vue 、 PageTwo.vue </li>
+</ul>
+<p>在 router/index.js 中引⼊路由</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &#x2F;&#x2F; 主要配置3个参数,访问的路由地址，路由名字及懒加载加载哪个组件</span><br><span class="line"> path: &#39;&#39;,</span><br><span class="line"> &#x2F;&#x2F; name属性⽤于路由跳转及params传参</span><br><span class="line"> name: &#39;&#39;,</span><br><span class="line"> component: &#39;&#39;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><pre><code class="js"><span class="comment">// 完整路由代码</span>
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router({
+    routes: [
+        {
+            path: <span class="string">'/'</span>,
+            component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/Main'</span>),
+            children: [
+                {
+                    path: <span class="string">'/'</span>,
+                    name: <span class="string">'home'</span>
+                    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/Home/Home'</span>),
+                },
+                {
+                    path: <span class="string">'/user'</span>,
+                    name: <span class="string">'user'</span>
+                    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/UserManage/UserManage'</span>),
+               },
+                {
+                    path: <span class="string">'/video'</span>,
+                    name: <span class="string">'video'</span>
+                    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/VideoManage/VideoManage'</span>),
+               },
+                {
+                    path: <span class="string">'/page1'</span>,
+                    name: <span class="string">'page1'</span>
+                    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/Other/PageOne'</span>),
+                },
+                {
+                    path: <span class="string">'/page2'</span>,
+                    name: <span class="string">'page2'</span>
+                    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/Other/PageTwo'</span>),
+                },
+            ]
+        }
+    ]
+})
+&lt;!--￼<span class="number">17</span>--&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="顶部导航菜单及与左侧导航联动的⾯包屑实现-下"><a href="#顶部导航菜单及与左侧导航联动的⾯包屑实现-下" class="headerlink" title="顶部导航菜单及与左侧导航联动的⾯包屑实现(下)"></a>顶部导航菜单及与左侧导航联动的⾯包屑实现(下)</h2><h2 id="vuex中的-tab-js"><a href="#vuex中的-tab-js" class="headerlink" title="vuex中的 tab.js"></a>vuex中的 tab.js</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tab.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        isCollapse: <span class="literal">false</span>,</span><br><span class="line">        currentMenu: <span class="literal">null</span>,</span><br><span class="line">        menu: [],</span><br><span class="line">        tabsList: [</span><br><span class="line">            &#123;</span><br><span class="line">                path: <span class="string">'/'</span>,</span><br><span class="line">                name: <span class="string">'home'</span>,</span><br><span class="line">                label: <span class="string">'⾸⻚'</span>,</span><br><span class="line">                icon: <span class="string">'home'</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        closeTab(state, val) &#123;</span><br><span class="line">            <span class="keyword">let</span> result = state.tabsList.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> item.name === val.name)</span><br><span class="line">            state.tabsList.splice(result, <span class="number">1</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使⽤vuex实现切换tab⻚功能"><a href="#使⽤vuex实现切换tab⻚功能" class="headerlink" title="使⽤vuex实现切换tab⻚功能"></a>使⽤vuex实现切换tab⻚功能</h2><ul>
+<li>在 Main.vue 中引⼊ CommonTab.vue 组件 </li>
+<li>在vuex⾥定义存取标签的 tagList ，⽅便⾮⽗⼦传递数据 </li>
+<li>定义 vuex 中侧边栏点击后将菜单加⼊到 tagList 中的⽅法 </li>
+<li>定义 vuex 中点击标签后触发删除的⽅法</li>
+</ul>
+<h2 id="构建⻚⾯组件，连通公共组件"><a href="#构建⻚⾯组件，连通公共组件" class="headerlink" title="构建⻚⾯组件，连通公共组件"></a>构建⻚⾯组件，连通公共组件</h2><ul>
+<li>建⽴每个⻚⾯组件 </li>
+<li>连通⾯包屑 </li>
+<li>连通侧边栏 </li>
+<li>连通标签栏</li>
+</ul>
+<h2 id="⻚⾯布局整体样式优化"><a href="#⻚⾯布局整体样式优化" class="headerlink" title="⻚⾯布局整体样式优化"></a>⻚⾯布局整体样式优化</h2><ul>
+<li>侧边栏背景⾊改变 </li>
+<li>tag选中样式优化 </li>
+<li>⾯包屑当前激活菜单样式优化 </li>
+<li>细节优化</li>
+</ul>
+<h1 id="后台视频管理系统之⾸⻚开发"><a href="#后台视频管理系统之⾸⻚开发" class="headerlink" title="后台视频管理系统之⾸⻚开发"></a>后台视频管理系统之⾸⻚开发</h1><h2 id="介绍mock-js及axios全局配置"><a href="#介绍mock-js及axios全局配置" class="headerlink" title="介绍mock.js及axios全局配置"></a>介绍mock.js及axios全局配置</h2><p>Mock.js </p>
+<ul>
+<li><p>作⽤：⽣成随机数据，拦截ajax请求 </p>
+</li>
+<li><p>安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add mockjs</span><br><span class="line">npm install mockjsMock.js</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>核⼼： Mock.mock()</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 根据数据模板⽣成模拟数据</span><br><span class="line">Mock.mock( rurl, rtype, template)</span><br><span class="line">&#x2F;*</span><br><span class="line">** rurl: 表示需要拦截的 URL，可以是 URL 字符串或 URL 正则</span><br><span class="line">** eg. &#x2F;\&#x2F;domain\&#x2F;list\.json&#x2F;、&#39;&#x2F;domian&#x2F;list.json&#39;</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Mock.Random() 随机⽣成数据</li>
+</ul>
+<h2 id="使⽤Mock随机返回主⻚数据"><a href="#使⽤Mock随机返回主⻚数据" class="headerlink" title="使⽤Mock随机返回主⻚数据"></a>使⽤Mock随机返回主⻚数据</h2><ul>
+<li>新建 mock ⽂件夹 </li>
+<li>配置mock请求时间 </li>
+<li>新建 home.js 存放主⻚的数据 </li>
+<li>安装mock的语法⽣成数据</li>
+</ul>
+<h2 id="使⽤element布局组件实现⾸⻚布局"><a href="#使⽤element布局组件实现⾸⻚布局" class="headerlink" title="使⽤element布局组件实现⾸⻚布局"></a>使⽤element布局组件实现⾸⻚布局</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223101055.png" alt="image-20211223101054537"></p>
+<p>分析布局 选择组件</p>
+<h2 id="完成⾸⻚除图表外的内容"><a href="#完成⾸⻚除图表外的内容" class="headerlink" title="完成⾸⻚除图表外的内容"></a>完成⾸⻚除图表外的内容</h2><p>定义右上⻆统计数据格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">countData: [</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'今⽇⽀付订单'</span>,</span><br><span class="line">        通过v-<span class="keyword">for</span>循环，渲染⻚⾯</span><br><span class="line">        value: <span class="number">1234</span>,</span><br><span class="line">        icon: <span class="string">'success'</span>,</span><br><span class="line">        color: <span class="string">'#2ec7c9'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'今⽇收藏订单'</span>,</span><br><span class="line">        value: <span class="number">210</span>,</span><br><span class="line">        icon: <span class="string">'star-on'</span>,</span><br><span class="line">        color: <span class="string">'#ffb980'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'今⽇未⽀付订单'</span>,</span><br><span class="line">        value: <span class="number">1234</span>,</span><br><span class="line">        icon: <span class="string">'s-goods'</span>,</span><br><span class="line">        color: <span class="string">'#5ab1ef'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'本⽉⽀付订单'</span>,</span><br><span class="line">        value: <span class="number">1234</span>,</span><br><span class="line">        icon: <span class="string">'success'</span>,</span><br><span class="line">        color: <span class="string">'#2ec7c9'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'本⽉收藏订单'</span>,</span><br><span class="line">        value: <span class="number">210</span>,</span><br><span class="line">        icon: <span class="string">'star-on'</span>,</span><br><span class="line">        color: <span class="string">'#ffb980'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">'本⽉未⽀付订单'</span>,</span><br><span class="line">        value: <span class="number">1234</span>,</span><br><span class="line">        icon: <span class="string">'s-goods'</span>,</span><br><span class="line">        color: <span class="string">'#5ab1ef'</span></span><br><span class="line">    &#125;</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<p>通过v-for循环，渲染⻚⾯</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"num"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-card</span> <span class="attr">shadow</span>=<span class="string">"hover"</span> <span class="attr">v-for</span>=<span class="string">"item in countData"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">:key</span>=<span class="string">"item.name"</span> <span class="attr">:body-style</span>=<span class="string">"&#123;display: 'flex', padding: 0 &#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">:class</span>=<span class="string">"`el-icon-$&#123;item.icon&#125;`"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">:style</span>=<span class="string">"&#123; background: item.color &#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"detail"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"num"</span>&gt;</span>￥ &#123;&#123; item.value &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"txt"</span>&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-card</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="完成⾸⻚table部分及ECharts"><a href="#完成⾸⻚table部分及ECharts" class="headerlink" title="完成⾸⻚table部分及ECharts"></a>完成⾸⻚table部分及ECharts</h2><p>ECharts </p>
+<p>⼀个使⽤ JavaScript 实现的开源可视化库，通过这个库可实现可视化展示数据 </p>
+<p>快速⼊⻔ 先设置ECharts要在哪显示，设置EChart容器</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 为 ECharts 准备⼀个具备⼤⼩（宽⾼）的 DOM --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"main"</span> <span class="attr">style</span>=<span class="string">"width: 600px;height:400px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过 echarts.init ⽅法初始化⼀个 echarts 实例并通过 setOption ⽅法⽣成⼀个简单的 柱状图</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// data中声明echart对象</span></span><br><span class="line"><span class="comment">// 通过ref获取dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">this</span>.echart = echarts.init(<span class="keyword">this</span>.$refs.ref名字);</span><br><span class="line"><span class="comment">// 指定图表的配置项和数据</span></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    title: &#123;</span><br><span class="line">        text: <span class="string">'ECharts ⼊⻔示例'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    tooltip: &#123;&#125;,</span><br><span class="line">    legend: &#123;</span><br><span class="line">        data:[<span class="string">'销量'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    xAxis: &#123;</span><br><span class="line">        data: [<span class="string">"衬衫"</span>,<span class="string">"⽺⽑衫"</span>,<span class="string">"雪纺衫"</span>,<span class="string">"裤⼦"</span>,<span class="string">"⾼跟鞋"</span>,<span class="string">"袜⼦"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    yAxis: &#123;&#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        name: <span class="string">'销量'</span>,</span><br><span class="line">        type: <span class="string">'bar'</span>,</span><br><span class="line">        data: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 使⽤刚指定的配置项和数据显示图表。</span></span><br><span class="line"><span class="keyword">this</span>.echart.setOption(option);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223101356.png" alt="image-20211223101355281"></p>
+<h2 id="封装⼀个EChart组件的⼀些想法"><a href="#封装⼀个EChart组件的⼀些想法" class="headerlink" title="封装⼀个EChart组件的⼀些想法"></a>封装⼀个EChart组件的⼀些想法</h2><ul>
+<li>图表的⼤分类 </li>
+<li>组件的⼀些动态参数抽离 </li>
+<li>组件的基本配置 </li>
+<li>主题颜⾊</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">color: [</span><br><span class="line"> &#39;#2ec7c9&#39;,</span><br><span class="line"> &#39;#b6a2de&#39;,</span><br><span class="line"> &#39;#5ab1ef&#39;,</span><br><span class="line"> &#39;#ffb980&#39;,</span><br><span class="line"> &#39;#d87a80&#39;,</span><br><span class="line"> &#39;#8d98b3&#39;,</span><br><span class="line"> &#39;#e5cf0d&#39;,</span><br><span class="line"> &#39;#97b552&#39;,</span><br><span class="line"> &#39;#95706d&#39;,</span><br><span class="line"> &#39;#dc69aa&#39;,</span><br><span class="line"> &#39;#07a2a4&#39;,</span><br><span class="line"> &#39;#9a7fd1&#39;,</span><br><span class="line"> &#39;#588dd5&#39;,</span><br><span class="line"> &#39;#f5994e&#39;,</span><br><span class="line"> &#39;#c05050&#39;,</span><br><span class="line"> &#39;#59678c&#39;,</span><br><span class="line"> &#39;#c9ab00&#39;,</span><br><span class="line"> &#39;#7eb00a&#39;,</span><br><span class="line"> &#39;#6f5553&#39;,</span><br><span class="line"> &#39;#c14089&#39;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="上⼿封装⼀个EChart组件并处理数据展示图表"><a href="#上⼿封装⼀个EChart组件并处理数据展示图表" class="headerlink" title="上⼿封装⼀个EChart组件并处理数据展示图表"></a>上⼿封装⼀个EChart组件并处理数据展示图表</h2><p>有坐标轴的图表 数据格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 类⽬轴</span><br><span class="line">xAxis: &#123;</span><br><span class="line"> data: [],</span><br><span class="line"> type: &#39;category&#39;,</span><br><span class="line">&#125;,</span><br><span class="line">&#x2F;&#x2F; 数据部分</span><br><span class="line">yAxis: &#123;</span><br><span class="line"> type: &#39;value&#39;</span><br><span class="line">&#125;,</span><br><span class="line">series: []</span><br></pre></td></tr></table></figure>
+
+<p>没坐标轴的图表 数据格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> series: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改EChart组件样式及⾃适应图表-上"><a href="#修改EChart组件样式及⾃适应图表-上" class="headerlink" title="修改EChart组件样式及⾃适应图表(上)"></a>修改EChart组件样式及⾃适应图表(上)</h2><p>完善图表选项</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">axisOption: &#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">'axis'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    legend: &#123;</span><br><span class="line">         textStyle: &#123;</span><br><span class="line">             <span class="comment">//图例⽂字的样式</span></span><br><span class="line">             color: <span class="string">'#333'</span></span><br><span class="line">         &#125;</span><br><span class="line"> &#125;,</span><br><span class="line">     grid: &#123;</span><br><span class="line">         left: <span class="string">'20%'</span></span><br><span class="line">     &#125;,</span><br><span class="line">         color: [</span><br><span class="line">             <span class="string">'#2ec7c9'</span>,</span><br><span class="line">             <span class="string">'#b6a2de'</span>,</span><br><span class="line">             <span class="string">'#5ab1ef'</span>,</span><br><span class="line">             <span class="string">'#ffb980'</span>,</span><br><span class="line">             <span class="string">'#d87a80'</span>,</span><br><span class="line">             <span class="string">'#8d98b3'</span>,</span><br><span class="line">             <span class="string">'#e5cf0d'</span>,</span><br><span class="line">             <span class="string">'#97b552'</span>,</span><br><span class="line">             <span class="string">'#95706d'</span>,</span><br><span class="line">             <span class="string">'#dc69aa'</span>,</span><br><span class="line">             <span class="string">'#07a2a4'</span>,</span><br><span class="line">             <span class="string">'#9a7fd1'</span>,</span><br><span class="line">             <span class="string">'#588dd5'</span>,</span><br><span class="line">             <span class="string">'#f5994e'</span>,</span><br><span class="line">             <span class="string">'#c05050'</span>,</span><br><span class="line">             <span class="string">'#59678c'</span>,</span><br><span class="line">             <span class="string">'#c9ab00'</span>,</span><br><span class="line">             <span class="string">'#7eb00a'</span>,</span><br><span class="line">             <span class="string">'#6f5553'</span>,</span><br><span class="line">             <span class="string">'#c14089'</span></span><br><span class="line">         ],</span><br><span class="line">             xAxis: &#123;</span><br><span class="line">                 data: [],</span><br><span class="line">                 type: <span class="string">'category'</span>,</span><br><span class="line">                 axisLine: &#123;</span><br><span class="line">                    lineStyle: &#123;</span><br><span class="line">                    color: <span class="string">'#17b3a3'</span> <span class="comment">//x轴颜⾊</span></span><br><span class="line">                    &#125;</span><br><span class="line">                 &#125;,</span><br><span class="line">                  <span class="comment">// 字体倾斜</span></span><br><span class="line">                  axisLabel: &#123;</span><br><span class="line">                     color: <span class="string">'#333'</span></span><br><span class="line">                  &#125;</span><br><span class="line">             &#125;,</span><br><span class="line">             yAxis: &#123;</span><br><span class="line">                  type: <span class="string">'value'</span>,</span><br><span class="line">                  axisLabel: &#123;</span><br><span class="line">                  	formatter: <span class="string">'&#123;value&#125; '</span></span><br><span class="line">                  &#125;,</span><br><span class="line">                  axisLine: &#123;</span><br><span class="line">                     lineStyle: &#123;</span><br><span class="line">                        color: <span class="string">'#17b3a3'</span> <span class="comment">//坐标轴颜⾊</span></span><br><span class="line">                     &#125;</span><br><span class="line">                  &#125;,</span><br><span class="line">                  splitLine: &#123;</span><br><span class="line">                      show: <span class="literal">true</span>,</span><br><span class="line">                      lineStyle: &#123;</span><br><span class="line">                          color: [<span class="string">'#eee'</span>],</span><br><span class="line">                          width: <span class="number">1</span>,</span><br><span class="line">                          type: <span class="string">'solid'</span></span><br><span class="line">                 	 &#125;</span><br><span class="line">				&#125;</span><br><span class="line"> 			&#125;,</span><br><span class="line"> 		series: []</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改EChart组件样式及⾃适应图表-下"><a href="#修改EChart组件样式及⾃适应图表-下" class="headerlink" title="修改EChart组件样式及⾃适应图表(下)"></a>修改EChart组件样式及⾃适应图表(下)</h2><p>完善组件样式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">normalOption: &#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        trigger: <span class="string">'item'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    color: [<span class="string">'#0f78f4'</span>, <span class="string">'#dd536b'</span>, <span class="string">'#9462e5'</span>, <span class="string">'#a6a6a6'</span>, <span class="string">'#e1bb22'</span>,</span><br><span class="line">                <span class="string">'#39c362'</span>, <span class="string">'#3ed1cf'</span>],</span><br><span class="line">    series: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要⾃适应的地⽅ 浏览器窗⼝⼤⼩发⽣变化 折叠菜单的时候 </p>
+<h1 id="Echart组件封装总结"><a href="#Echart组件封装总结" class="headerlink" title="Echart组件封装总结"></a>Echart组件封装总结</h1><ul>
+<li>观察⽂档，考虑组件需要的基本参数 </li>
+<li>参数筛选，分为从⽗组件传来的参数和⾃身的参数 </li>
+<li>完善组件，观察设计图，找不同，在⽂档中寻找对应的配置项 </li>
+<li>细节优化，考虑多种场景下，图表⾃适应的处理</li>
+</ul>
+<h1 id="⽤户管理⻚及详解权限管理"><a href="#⽤户管理⻚及详解权限管理" class="headerlink" title="⽤户管理⻚及详解权限管理"></a>⽤户管理⻚及详解权限管理</h1><h2 id="⽤户管理⻚"><a href="#⽤户管理⻚" class="headerlink" title="⽤户管理⻚"></a>⽤户管理⻚</h2><p><img src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20211223102417.png" alt="image-20211223102416289"></p>
+<p>管理⻚功能：新增⽤户 搜索⽤户 更新⽤户 删除⽤户 分⻚展示⽤户列表</p>
+<p>分析⻚⾯组成 考虑组件设计</p>
+<h2 id="更完善的表单组件封装"><a href="#更完善的表单组件封装" class="headerlink" title="更完善的表单组件封装"></a>更完善的表单组件封装</h2><p>分析表单组成 输⼊框 下拉框 ⽇期选择器 单选列表 多选列表</p>
+<p>考虑基本参数 绑定的表单字段 表单描述⽂本 </p>
+<p>插槽拓展组件 按钮组</p>
+<h2 id="通⽤表格组件封装"><a href="#通⽤表格组件封装" class="headerlink" title="通⽤表格组件封装"></a>通⽤表格组件封装</h2><p>表格基本参数分析 </p>
+<ul>
+<li>data： 传⼊的数据列表 </li>
+<li>prop： 传⼊的数据字段 </li>
+<li>label： 列名 </li>
+</ul>
+<p>表格可选参数分析 </p>
+<ul>
+<li>width：列宽 </li>
+<li>type：类型 </li>
+</ul>
+<p>表格扩展 </p>
+<ul>
+<li>分⻚参数 total： 数据条数总计 page： 当前⻚数 </li>
+<li>加载状态 loading：布尔值</li>
+</ul>
+<h2 id="完成表格组件的封装"><a href="#完成表格组件的封装" class="headerlink" title="完成表格组件的封装"></a>完成表格组件的封装</h2><ul>
+<li>调整表格样式，固定表格⾼度 </li>
+<li>添加操作列</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">label</span>=<span class="string">"操作"</span> <span class="attr">min-width</span>=<span class="string">"180"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot-scope</span>=<span class="string">"scope"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"mini"</span> @<span class="attr">click</span>=<span class="string">"handleEdit(scope.row)"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"mini"</span> <span class="attr">type</span>=<span class="string">"danger"</span> @<span class="attr">click</span>=<span class="string">"handleDelete(scope.row)"</span>&gt;</span>删</span><br><span class="line">            除<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加分⻚组件</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-pagination</span></span></span><br><span class="line"><span class="tag">               <span class="attr">class</span>=<span class="string">"pager"</span> <span class="attr">layout</span>=<span class="string">"prev, pager, next"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">:total</span>=<span class="string">"config.total"</span> <span class="attr">:current-page.sync</span>=<span class="string">"config.page"</span></span></span><br><span class="line"><span class="tag">               @<span class="attr">current-change</span>=<span class="string">"changePage"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-pagination</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="⽤户管理⻚⻚⾯功能实现-上"><a href="#⽤户管理⻚⻚⾯功能实现-上" class="headerlink" title="⽤户管理⻚⻚⾯功能实现(上)"></a>⽤户管理⻚⻚⾯功能实现(上)</h2><p>表格加载状态 </p>
+<p>分⻚功能</p>
+<p>编辑功能 </p>
+<p>删除功能</p>
+<h2 id="⽤户管理⻚⻚⾯功能实现-下"><a href="#⽤户管理⻚⻚⾯功能实现-下" class="headerlink" title="⽤户管理⻚⻚⾯功能实现(下)"></a>⽤户管理⻚⻚⾯功能实现(下)</h2><p>表格加载状态 elementUI中 v-loading 的使⽤ </p>
+<p>分⻚功能 </p>
+<p>编辑功能 </p>
+<p>删除功能</p>
+<h2 id="企业开发之权限管理"><a href="#企业开发之权限管理" class="headerlink" title="企业开发之权限管理"></a>企业开发之权限管理</h2><p>什么是权限管理 </p>
+<ul>
+<li><p>根据不同⽤户，返回不同菜单 </p>
+</li>
+<li><p>严格控制⽤户权限 </p>
+</li>
+<li><p>实现思路 </p>
+<ul>
+<li><p>动态路由 </p>
+</li>
+<li><p>后端返回的数据格式要求 </p>
+</li>
+<li><p>触发时机 </p>
+<ul>
+<li><p>登陆成功的时候触发操作 </p>
+</li>
+<li><p>Cookie中存在对应数据，⾸次进⼊⻚⾯时</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="权限管理之动态返回菜单的实现"><a href="#权限管理之动态返回菜单的实现" class="headerlink" title="权限管理之动态返回菜单的实现"></a>权限管理之动态返回菜单的实现</h2><p>更改路由表 根据是否需要权限的路由分类 </p>
+<p>vuex⾥补充mutation </p>
+<ul>
+<li>保存菜单 </li>
+<li>动态添加菜单 </li>
+</ul>
+<p>⽣成路由的时机 </p>
+<ul>
+<li>登录时 </li>
+<li>刷新时 </li>
+</ul>
+<p>点击退出时，清除cookie后，刷新下⻚⾯</p>
+<h2 id="权限管理之路由守卫判断⽤户登录状态"><a href="#权限管理之路由守卫判断⽤户登录状态" class="headerlink" title="权限管理之路由守卫判断⽤户登录状态"></a>权限管理之路由守卫判断⽤户登录状态</h2><p>permission.js 中返回token </p>
+<p>登录时保存token </p>
+<ul>
+<li>保存在vuex⾥ </li>
+<li>保存在cookie⾥ </li>
+</ul>
+<p>路由守卫根据判断token存不存在，判断⽤户⻚⾯跳转</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断⽤户登录状态，未登录跳转到登录⻚，已登录跳转到⾸⻚</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 从cookie⾥获取token，防⽌刷新后token丢失</span></span><br><span class="line">    store.commit(<span class="string">'getToken'</span>)</span><br><span class="line">    <span class="keyword">let</span> token = store.state.user.token</span><br><span class="line">    <span class="keyword">if</span> (!token &amp;&amp; to.name !== <span class="string">'login'</span>) &#123;</span><br><span class="line">        next(&#123; <span class="attr">name</span>: <span class="string">'login'</span> &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        next()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="项⽬总结"><a href="#项⽬总结" class="headerlink" title="项⽬总结"></a>项⽬总结</h1><p>项⽬当中遇到的坑以及解决思路</p>
+<ul>
+<li>通过vue-devtool调试 </li>
+<li>通过console输出调试</li>
+</ul>
+<p>组件的封装思路 </p>
+<ul>
+<li><p>判断的基本参数 </p>
+<ul>
+<li><p>哪些写死 </p>
+</li>
+<li><p>哪些是传进来 </p>
+</li>
+</ul>
+</li>
+<li><p>拓展 </p>
+<ul>
+<li><p>⾃定义事件，判断传出哪些参数</p>
+</li>
+<li><p>插槽扩展 </p>
+</li>
+</ul>
+</li>
+<li><p>优化 </p>
+<ul>
+<li>提⾼他的适应性 <ul>
+<li>vif，velse根据⽗组件传⼊的条件来⽣成对应的模板</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>学习⼀个新技术 </p>
+</li>
+<li><p>EChart </p>
+<ul>
+<li>⼤局观，直接看快速教程 </li>
+<li>分成⼏部分，在对应部分查找⽂</li>
+</ul>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Kaluna</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://blog.kaluna.top/2021/12/22/elementUI%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">https://blog.kaluna.top/2021/12/22/elementUI%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/elementUI/">elementUI</a></div><div class="post-qr-code"><div class="post-qr-code-item"><img class="post-qr-code__img" src="https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210930144213.jpg"><div class="post-qr-code__desc"></div></div></div><nav id="pagination"><div class="next-post pull-right"><a href="/2021/12/21/vue2.5%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E5%85%A8%E5%AE%B6%E6%A1%B6%E5%8D%95%E9%A1%B5%E9%9D%A2%E4%BB%BF%E4%BA%AC%E4%B8%9C%E7%94%B5%E5%95%86/"><span>vue2.5项目实战全家桶单页面仿京东电商</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="disqus_thread"></div><script>var unused = null;
+var disqus_config = function () {
+  this.page.url = 'https://blog.kaluna.top/2021/12/22/elementUI%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/';
+  this.page.identifier = '2021/12/22/elementUI项目实战/';
+  this.page.title = 'elementUI项目实战';
+}
+var d = document, s = d.createElement('script');
+s.src = "https://" + 'shortname-pzy8cndfkq' +".disqus.com/embed.js";
+s.setAttribute('data-timestamp', '' + +new Date());
+(d.head || d.body).appendChild(s);</script><script id="dsq-count-scr" src="https://shortname-pzy8cndfkq.disqus.com/count.js" async></script></div></div><footer class="footer-bg" style="background-image: url(https://gitee.com/YuerryHUAHUA/figure/raw/master/img/20210521080208.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2013 - 2021 By Kaluna</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody" target="_blank" rel="noopener"><span>Melody</span></a></div><div class="icp"><a><span></span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
